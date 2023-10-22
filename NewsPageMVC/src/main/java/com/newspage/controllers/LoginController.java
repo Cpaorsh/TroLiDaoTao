@@ -42,8 +42,8 @@ public class LoginController {
       HttpSession session = request.getSession(true);
       
       session.setAttribute("username", user.getUsername());
-      session.setAttribute("name", user.getName());
-      session.setAttribute("role", user.getRole());
+      session.setAttribute("name", user.getSinhvien().getHoten());
+      session.setAttribute("role", user.getSinhvien().getChucvu());
       
     } else {
       mav = new ModelAndView("login");

@@ -27,9 +27,8 @@
    <div class="col-md-12 mx-auto">
    
    <div class="bg-light d-flex justify-content-between align-items-center">
-   <h4 class="p-3">Manage Posts</h4>
+   <h4 class="p-3">Quản lý điểm rèn luyện</h4>
    </div>
-   <br>
    <br>
 	   <table class="table table-striped border">
 		  <thead>
@@ -45,14 +44,13 @@
 		  <tbody>
 		  <c:forEach var="drl" items="${dlist}"> 
 		    <tr>
-		      <th scope="row">${user.msv}</th>
-		      <td>${user.name}</td>
+		      <th scope="row">${drl.msv}</th>
+		      <td>${drl.sinhvien.hoten}</td>
 		      <td>${drl.tongdiem}</td>
 		      <td>${drl.lttongdiem}</td>
 		      <td>${drl.gvtongdiem}</td>
 			   <td>
-			   <a class="btn btn-sm btn-outline-success" href="detaildrl/${drl.msv}">View</a>
-			   <a class="btn btn-sm btn-outline-primary" href="editdrl/${drl.msv}">Edit</a>
+			   <a class="btn btn-sm btn-outline-primary" href="drledit/${drl.msv}">Edit</a>
 			   </td> 
 		    </tr>
 		    </c:forEach>

@@ -7,7 +7,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;    
 import org.springframework.jdbc.core.RowMapper;
 
-import com.newspage.beans.Drl;  
+import com.newspage.beans.Drl;
+import com.newspage.beans.Sinhvien;  
 
 public class DrlDao {
 
@@ -47,14 +48,16 @@ JdbcTemplate template;
 	
 	
 	public Drl getDrlByMsv(int msv){    
-	    String sql="select * from page where msv=?";    
+	    String sql="select * from drl where msv=?";    
 	    return template.queryForObject(sql, new Object[]{msv},new BeanPropertyRowMapper<Drl>(Drl.class));    
 	}
 	
+	
 	public List<Drl> getDrls(){    
-	    return template.query("select * from drl order by msv desc",new RowMapper<Drl>(){    
+	    return template.query("select * from drl INNER JOIN sinhvien ON drl.msv = sinhvien.msv",new RowMapper<Drl>(){    
 	        public Drl mapRow(ResultSet rs, int row) throws SQLException {    
-	        	Drl e=new Drl();    
+	        	Drl e=new Drl(); 
+	        	Sinhvien s= new Sinhvien();
 	            e.setMsv(rs.getInt(1));    
 	            e.setYthuc(rs.getInt(2));    
 	            e.setClbhoc(rs.getInt(3));    
@@ -97,6 +100,10 @@ JdbcTemplate template;
 	            e.setGvgiupdo(rs.getInt(38));
 	            e.setGvtgdoanhoi(rs.getInt(39));
 	            e.setGvtongdiem(rs.getInt(40));
+	           
+	            s.setHoten(rs.getString("hoten"));
+	            s.setLop(rs.getString("lop"));
+	            e.setSinhvien(s);
 	            return e;    
 	        }    
 	    });    

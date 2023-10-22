@@ -1,30 +1,50 @@
 package com.newspage.beans;
 
+import javax.persistence.CascadeType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 public class User {
 
-  private int id;
+  private int max;
   private String username;
   private String password;
-  private String name;
-  private String email;
-  private String role;
-  private int phone;
+  
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "msv")
+  private Sinhvien sinhvien;
+  
+  public Sinhvien getSinhvien() {
+    return sinhvien;
+  }
+  public void setSinhvien(Sinhvien sinhvien) {
+    this.sinhvien = sinhvien;
+  }
 
+
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "mgv")
+  private Giangvien giangvien;
   
+  public Giangvien getGiangvien() {
+    return giangvien;
+  }
+
+  public void setGiangvien(Giangvien giangvien) {
+    this.giangvien = giangvien;
+  }
   
-  public int getId() {
-	    return id;
-	  }
-	  public void setId(int id) {
-	    //System.out.println("id: " + id);
-	    this.id = id;
-	  }
+  public int getMax() {
+    return max;
+  }
+  public void setMax(int max) {
+    this.max = max;
+  }
 
   public String getUsername() {
     return username;
   }
   public void setUsername(String username) {
-    //System.out.println("username: " + username);
     this.username = username;
   }
 
@@ -35,32 +55,4 @@ public class User {
     this.password = password;
   }
 
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    System.out.println("name: " + name);
-    this.name = name;
-  }
-
-  public String getEmail() {
-    return email;
-  }
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  public String getRole() {
-    return role;
-  }
-  public void setRole(String role) {
-    this.role = role;
-  }
-
-  public int getPhone() {
-    return phone;
-  }
-  public void setPhone(int phone) {
-    this.phone = phone;
-  }
 }

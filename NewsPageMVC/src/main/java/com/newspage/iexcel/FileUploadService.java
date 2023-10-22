@@ -15,6 +15,8 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.newspage.beans.Sinhvien;
+
 //import com.newspage.iexcel.FileUploadDao;
 
 public class FileUploadService {
@@ -32,29 +34,35 @@ public class FileUploadService {
 			sheet = workbook.getSheetAt(0);
 
 			/*Build the header portion of the Output File*/
-			String headerDetails= "EmployeeId,EmployeeName,Address,Country";
+			String headerDetails= "Stt,Msv,Hoten,Ngaysinh,Lop,Cc,Kt,Chucvu";
 			String headerNames[] = headerDetails.split(",");
 
 			/*Read and process each Row*/
-			ArrayList<ExcelTemplateVO> employeeList = new ArrayList<>();
+			ArrayList<Sinhvien> sinhvienList = new ArrayList<>();
 			Iterator<Row> rowIterator = sheet.iterator();
 
 			while(rowIterator.hasNext())
 			{
 				Row row = rowIterator.next();
 				//Read and process each column in row
-				ExcelTemplateVO excelTemplateVO = new ExcelTemplateVO();
+				Sinhvien excelTemplateVO = new Sinhvien();
 				int count=0;
+				
 				while(count<headerNames.length){
-					String methodName = "set"+headerNames[count];
-					String inputCellValue = getCellValueBasedOnCellType(row,count++);
-					setValueIntoObject(excelTemplateVO, ExcelTemplateVO.class, methodName, "java.lang.String", inputCellValue);
+					if(count==1 || count==2 || count==3 || count==4 || count== 7){
+						String methodName = "set"+headerNames[count];
+						String inputCellValue = getCellValueBasedOnCellType(row,count++);
+						setValueIntoObject(excelTemplateVO, Sinhvien.class, methodName, "java.lang.String", inputCellValue);
+					}
+					else {
+						count++;
+					}
 				}
 
-				employeeList.add(excelTemplateVO);
+				sinhvienList.add(excelTemplateVO);
 			}
-			employeeList.remove(0); 
-			fileUploadDao.saveFileDataInDB(employeeList);
+			sinhvienList.remove(0); 
+			fileUploadDao.saveFileDataInDB(sinhvienList);
 
 		}
 		catch(Exception ex){

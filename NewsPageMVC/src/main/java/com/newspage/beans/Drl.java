@@ -1,7 +1,11 @@
 package com.newspage.beans;
 
-public class Drl {
+import javax.persistence.CascadeType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
+public class Drl {
+ 
 	  private int msv;
 	  private int ythuc;
 	  private int clbhoc;
@@ -45,6 +49,18 @@ public class Drl {
 	  private int gvtgdoanhoi;
 	  private int gvtongdiem;
 
+	  @OneToOne(cascade = CascadeType.PERSIST)
+	  @JoinColumn(name = "msv")
+	  private Sinhvien sinhvien;
+	  
+	  public Sinhvien getSinhvien() {
+	    return sinhvien;
+	  }
+	  public void setSinhvien(Sinhvien sinhvien) {
+	    this.sinhvien = sinhvien;
+	  }
+		 
+	  
 	  public int getMsv() {
 	    return msv;
 	  }

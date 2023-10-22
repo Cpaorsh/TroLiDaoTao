@@ -28,7 +28,7 @@
    
    <div class="bg-light d-flex justify-content-between align-items-center">
    <h4 class="p-3">Manage Posts</h4>
-   <a class="btn btn-primary" href="pageaddform">+ Add New Posts</a>
+   <a class="btn btn-primary" href="pageadd">+ Add New Posts</a>
    </div>
    <br>
    <br>

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
+import com.newspage.beans.Sinhvien;
 import com.newspage.beans.Login;
 import com.newspage.beans.User;
 
@@ -22,14 +23,14 @@ public class UserDaoImpl implements UserDao {
   JdbcTemplate jdbcTemplate;
 
   public int register(User user) {
-    String sql = "insert into users values(?,?,?,?,?,?,?)";
+    String sql = "insert into users values(?,?,?)";
 
-    return jdbcTemplate.update(sql, new Object[] { user.getUsername(), user.getPassword(), user.getName(),
-        user.getId(), user.getEmail(), user.getRole(), user.getPhone() });
+    return jdbcTemplate.update(sql, new Object[] { user.getMax(), user.getUsername(), user.getPassword()  });
   }
 
+  //select * from drl INNER JOIN sinhvien ON drl.msv = sinhvien.msv
   public User validateUser(Login login) {
-    String sql = "select * from users where username='" + login.getUsername() + "' and password='" + login.getPassword()
+    String sql = "select * from users INNER JOIN sinhvien ON users.max = sinhvien.msv where username='" + login.getUsername() + "' and password='" + login.getPassword()
         + "'";
     List<User> users = jdbcTemplate.query(sql, new UserMapper());
 
@@ -42,14 +43,15 @@ class UserMapper implements RowMapper<User> {
 
   public User mapRow(ResultSet rs, int arg1) throws SQLException {
     User user = new User();
-
+    Sinhvien s = new Sinhvien();
+    
+    user.setMax(rs.getInt("max"));
     user.setUsername(rs.getString("username"));
     user.setPassword(rs.getString("password"));
-    user.setName(rs.getString("name"));
-    user.setId(rs.getInt("id"));
-    user.setEmail(rs.getString("email"));
-    user.setRole(rs.getString("role"));
-    user.setPhone(rs.getInt("phone"));
+
+    s.setHoten(rs.getString("hoten"));
+    s.setChucvu(rs.getString("chucvu"));
+    user.setSinhvien(s);
 
     return user;
   }

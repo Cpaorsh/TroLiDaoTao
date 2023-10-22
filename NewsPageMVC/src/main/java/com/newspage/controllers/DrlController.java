@@ -17,24 +17,24 @@ import com.newspage.dao.DrlDao;
 public class DrlController {
 
 	@Autowired
-    DrlDao dao;
+    DrlDao drlDao;
 	
     @RequestMapping(value={"drl/drllist"})    
     public String drllist(Model m){    
-        List<Drl> dlist = dao.getDrls();    
+        List<Drl> dlist = drlDao.getDrls();    
         m.addAttribute("dlist",dlist);  
         return "drllist";    
     }
     
     @RequestMapping(value="drl/drledit/{msv}")    
     public String edit(@PathVariable int msv, Model m){    
-        Drl drl=dao.getDrlByMsv(msv);    
+        Drl drl=drlDao.getDrlByMsv(msv);    
         m.addAttribute("command",drl);  
         return "drledit";    
     }    
     @RequestMapping(value="drl/editsave",method = RequestMethod.POST)    
     public String editsave(@ModelAttribute("drl") Drl drl){    
-        dao.updateSv(drl);    
+    	drlDao.updateSv(drl);    
         return "redirect:/drl/drllist";    
     }
 }

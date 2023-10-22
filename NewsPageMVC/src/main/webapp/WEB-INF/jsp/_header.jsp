@@ -35,7 +35,7 @@
 	<%
         } else {
     %>
-		<p  class="text-white"> Welcome <%= session.getAttribute("username") %> </p>
+		<p  class="text-white"> Welcome <%= session.getAttribute("name") %> </p>
 		<a class="btn btn-sm btn-outline-secondary me-2" href="/NewsPageMVC/login">Logout</a>
     <%
         }

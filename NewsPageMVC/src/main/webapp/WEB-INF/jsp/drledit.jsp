@@ -28,7 +28,6 @@
    
    <div class="bg-light d-flex justify-content-between align-items-center">
    <h4 class="p-3">Manage Posts</h4>
-   <a class="btn btn-primary" href="pageaddform">+ Add New Posts</a>
    </div>
    <br>
    <br>
@@ -46,10 +45,12 @@
 		    <tr>
 		      <td>1. Ý thức và thái độ học tập: </td>
 		      <td></td>
-		      <td></td>
+		      <td>
+   			  	<form:input class="form-control" placeholder="Ltythuc" path="ltythuc" />
+		      </td>
 		      <td>
 		      	<form:select class="form-control" placeholder="Gvythuc" path="gvythuc">
-				  	<form:option value="4"></form:option>
+				  	<form:option value="4">4: dghgf</form:option>
     				<form:option value="2"></form:option>
     				<form:option value="0"></form:option>    				
 				</form:select>
