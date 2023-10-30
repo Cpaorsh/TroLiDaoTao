@@ -17,32 +17,18 @@ JdbcTemplate template;
 	public void setTemplate(JdbcTemplate template) {    
 	    this.template = template;    
 	}    
+	  
 	
-	
-	public int saveSv(Drl p){    
-		String sql="insert into drl(ythuc, clbhoc, quyche, vuotkho, hoctap, tsvgioi, kqchaphanh, tgngoaikhoa, dangnn, bieuduong, giupdo, tgdoanhoi) values('"+p.getYthuc()+"', '"+p.getClbhoc()+"',  '"+p.getQuyche()+"', '"+p.getVuotkho()+"','"+p.getHoctap()+"','"+p.getTsvgioi()+"','"+p.getKqchaphanh()+"','"+p.getTgngoaikhoa()+"','"+p.getDangnn()+"','"+p.getBieuduong()+"','"+p.getGiupdo()+"','"+p.getTgdoanhoi()+"')"; 
-	    return template.update(sql);    
-	}    
 	public int updateSv(Drl p){    
-		String sql="update page set ythuc='"+p.getYthuc()+"', clbhoc='"+p.getClbhoc()+"', quyche='"+p.getQuyche()+"', vuotkho='"+p.getVuotkho()+"', hoctap='"+p.getHoctap()+"', tsvgioi='"+p.getTsvgioi()+"', kqchaphanh='"+p.getKqchaphanh()+"', tgngoaikhoa='"+p.getTgngoaikhoa()+"', dangnn='"+p.getDangnn()+"', bieuduong='"+p.getBieuduong()+"', giupdo='"+p.getGiupdo()+"', tgdoanhoi='"+p.getTgdoanhoi()+"' where masv="+p.getMsv()+"";    
-	    return template.update(sql);    
-	}
-	
-	public int saveLt(Drl p){    
-		String sql="insert into drl(ltythuc, ltclbhoc, ltquyche, ltvuotkho, lthoctap, lttsvgioi, ltkqchaphanh, lttgngoaikhoa, ltdangnn, ltbieuduong, ltgiupdo, lttgdoanhoi) values('"+p.getLtythuc()+"', '"+p.getLtclbhoc()+"',  '"+p.getLtquyche()+"', '"+p.getLtvuotkho()+"','"+p.getLthoctap()+"','"+p.getLttsvgioi()+"','"+p.getLtkqchaphanh()+"','"+p.getLttgngoaikhoa()+"','"+p.getLtdangnn()+"','"+p.getLtbieuduong()+"','"+p.getLtgiupdo()+"','"+p.getLttgdoanhoi()+"')"; 
+		String sql="update drl set ythuc="+p.getYthuc()+", clbhoc="+p.getClbhoc()+", quyche="+p.getQuyche()+", vuotkho="+p.getVuotkho()+", hoctap="+p.getHoctap()+", tsvgioi="+p.getTsvgioi()+", kqchaphanh="+p.getKqchaphanh()+", tgngoaikhoa="+p.getTgngoaikhoa()+", dangnn="+p.getDangnn()+", bieuduong="+p.getBieuduong()+", giupdo="+p.getGiupdo()+", tgdoanhoi="+p.getTgdoanhoi()+" where msv="+p.getMsv()+"";    
 	    return template.update(sql);    
 	}    
 	public int updateLt(Drl p){    
-		String sql="update page set ltythuc='"+p.getLtythuc()+"', ltclbhoc='"+p.getLtclbhoc()+"', ltquyche='"+p.getLtquyche()+"', ltvuotkho='"+p.getLtvuotkho()+"', lthoctap='"+p.getLthoctap()+"', lttsvgioi='"+p.getLttsvgioi()+"', ltkqchaphanh='"+p.getLtkqchaphanh()+"', lttgngoaikhoa='"+p.getLttgngoaikhoa()+"', ltdangnn='"+p.getLtdangnn()+"', ltbieuduong='"+p.getLtbieuduong()+"', ltgiupdo='"+p.getLtgiupdo()+"', lttgdoanhoi='"+p.getLttgdoanhoi()+"' where masv="+p.getMsv()+"";    
-	    return template.update(sql);    
-	}
-	
-	public int saveGv(Drl p){    
-		String sql="insert into drl(gvythuc, gvclbhoc, gvquyche, gvvuotkho, gvhoctap, gvtsvgioi, gvkqchaphanh, gvtgngoaikhoa, gvdangnn, gvbieuduong, gvgiupdo, gvtgdoanhoi) values('"+p.getGvythuc()+"', '"+p.getGvclbhoc()+"',  '"+p.getGvquyche()+"', '"+p.getGvvuotkho()+"','"+p.getGvhoctap()+"','"+p.getGvtsvgioi()+"','"+p.getGvkqchaphanh()+"','"+p.getGvtgngoaikhoa()+"','"+p.getGvdangnn()+"','"+p.getGvbieuduong()+"','"+p.getGvgiupdo()+"','"+p.getGvtgdoanhoi()+"')"; 
+		String sql="update drl set ltythuc='"+p.getLtythuc()+"', ltclbhoc='"+p.getLtclbhoc()+"', ltquyche='"+p.getLtquyche()+"', ltvuotkho='"+p.getLtvuotkho()+"', lthoctap='"+p.getLthoctap()+"', lttsvgioi='"+p.getLttsvgioi()+"', ltkqchaphanh='"+p.getLtkqchaphanh()+"', lttgngoaikhoa='"+p.getLttgngoaikhoa()+"', ltdangnn='"+p.getLtdangnn()+"', ltbieuduong='"+p.getLtbieuduong()+"', ltgiupdo='"+p.getLtgiupdo()+"', lttgdoanhoi='"+p.getLttgdoanhoi()+"' where msv="+p.getMsv()+"";    
 	    return template.update(sql);    
 	}    
 	public int updateGv(Drl p){    
-		String sql="update page set gvythuc='"+p.getGvythuc()+"', gvclbhoc='"+p.getGvclbhoc()+"', gvquyche='"+p.getGvquyche()+"', gvvuotkho='"+p.getGvvuotkho()+"', gvhoctap='"+p.getGvhoctap()+"', gvtsvgioi='"+p.getGvtsvgioi()+"', gvkqchaphanh='"+p.getGvkqchaphanh()+"', gvtgngoaikhoa='"+p.getGvtgngoaikhoa()+"', gvdangnn='"+p.getGvdangnn()+"', gvbieuduong='"+p.getGvbieuduong()+"', gvgiupdo='"+p.getGvgiupdo()+"', gvtgdoanhoi='"+p.getGvtgdoanhoi()+"' where masv="+p.getMsv()+"";    
+		String sql="update drl set gvythuc='"+p.getGvythuc()+"', gvclbhoc='"+p.getGvclbhoc()+"', gvquyche='"+p.getGvquyche()+"', gvvuotkho='"+p.getGvvuotkho()+"', gvhoctap='"+p.getGvhoctap()+"', gvtsvgioi='"+p.getGvtsvgioi()+"', gvkqchaphanh='"+p.getGvkqchaphanh()+"', gvtgngoaikhoa='"+p.getGvtgngoaikhoa()+"', gvdangnn='"+p.getGvdangnn()+"', gvbieuduong='"+p.getGvbieuduong()+"', gvgiupdo='"+p.getGvgiupdo()+"', gvtgdoanhoi='"+p.getGvtgdoanhoi()+"' where msv="+p.getMsv()+"";    
 	    return template.update(sql);    
 	}
 	

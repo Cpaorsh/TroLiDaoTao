@@ -49,8 +49,8 @@ public class Drl {
 	  private int gvtgdoanhoi;
 	  private int gvtongdiem;
 
-	  @OneToOne(cascade = CascadeType.PERSIST)
-	  @JoinColumn(name = "msv")
+	  //@OneToOne(cascade = CascadeType.PERSIST)
+	  //@JoinColumn(name = "msv")
 	  private Sinhvien sinhvien;
 	  
 	  public Sinhvien getSinhvien() {

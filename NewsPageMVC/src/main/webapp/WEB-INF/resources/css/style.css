@@ -318,3 +318,52 @@ header span.lineright:before {
 	position: sticky;
     top: 0;
 }
+
+#fixedheight {
+    table-layout: fixed;
+}
+
+#fixedheight td label {
+    height: 38px;
+    overflow: hidden;
+    line-height: 1.7rem;
+}
+
+#fixedheight td label:hover{
+	height: auto;
+	overflow: visible;
+}
+
+#fixedheight td option {
+    font-size: 0.75rem;
+}
+	
+tbody {
+    vertical-align: baseline;	
+}
+
+.blocli {
+    pointer-events: none;
+    background-color: #e9ecef !important;
+}
+
+.alwa {
+	pointer-events: none;
+	color: white;
+	background-color: white !important;
+	border-color: white;
+	height: 1px !important;
+}
+
+.btn.blocli {
+	color: white;
+	background-color: white !important;
+}
+
+.btn.fail {
+    background-color: royalblue;
+    border-color: lightgray;
+}
+/*
+
+*/ 

@@ -6,7 +6,7 @@ import javax.persistence.OneToOne;
 
 public class User {
 
-  private int max;
+  private String max;
   private String username;
   private String password;
   
@@ -34,10 +34,10 @@ public class User {
     this.giangvien = giangvien;
   }
   
-  public int getMax() {
+  public String getMax() {
     return max;
   }
-  public void setMax(int max) {
+  public void setMax(String max) {
     this.max = max;
   }
 

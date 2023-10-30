@@ -32,9 +32,21 @@ public class DrlController {
         m.addAttribute("command",drl);  
         return "drledit";    
     }    
-    @RequestMapping(value="drl/editsave",method = RequestMethod.POST)    
-    public String editsave(@ModelAttribute("drl") Drl drl){    
+    @RequestMapping(value="drl/savesv",method = RequestMethod.POST)    
+    public String saveDrlSv(@ModelAttribute("drl") Drl drl){    
     	drlDao.updateSv(drl);    
+        return "redirect:/drl/drllist";    
+    }
+    
+    @RequestMapping(value="drl/savelt",method = RequestMethod.POST)    
+    public String saveDrlLt(@ModelAttribute("drl") Drl drl){    
+    	drlDao.updateLt(drl);    
+        return "redirect:/drl/drllist";    
+    }
+    
+    @RequestMapping(value="drl/savegv",method = RequestMethod.POST)    
+    public String saveDrlGv(@ModelAttribute("drl") Drl drl){    
+    	drlDao.updateGv(drl);    
         return "redirect:/drl/drllist";    
     }
 }

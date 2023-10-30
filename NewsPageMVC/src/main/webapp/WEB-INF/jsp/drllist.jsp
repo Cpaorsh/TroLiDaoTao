@@ -35,10 +35,10 @@
 		    <tr>
 		      <th scope="col">MSV</th>
 		      <th scope="col">Tên</th>
-		      <th scope="col">ĐRL tự chấm</th>
-		      <th scope="col">ĐRL lớp trưởng chấm</th>
-		      <th scope="col">ĐRL giáo viên chấm</th>
-		      <th scope="col">Actions</th>
+		      <th scope="col">ĐRL tự đánh giá</th>
+		      <th scope="col">ĐRL lớp trưởng đánh giá</th>
+		      <th scope="col">ĐRL giáo viên đánh giá</th>
+		      <th scope="col">Đánh giá</th>
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -50,7 +50,7 @@
 		      <td>${drl.lttongdiem}</td>
 		      <td>${drl.gvtongdiem}</td>
 			   <td>
-			   <a class="btn btn-sm btn-outline-primary" href="drledit/${drl.msv}">Edit</a>
+			   <a class="btn btn-sm btn-outline-primary" href="drledit/${drl.msv}">Xem</a>
 			   </td> 
 		    </tr>
 		    </c:forEach>
