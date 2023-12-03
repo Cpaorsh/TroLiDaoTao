@@ -11,6 +11,7 @@ public class Sinhvien {
 	private String ngaysinh;
 	private String lop;
 	private String chucvu;
+	private String dem;
 	
 	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "max")
@@ -73,5 +74,10 @@ public class Sinhvien {
 
 	
 	
-
+	public String getDem() {
+		return dem;
+	}
+	public void setDem(String dem) {
+		this.dem = dem;
+	}
 }

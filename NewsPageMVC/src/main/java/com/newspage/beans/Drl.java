@@ -1,8 +1,5 @@
 package com.newspage.beans;
 
-import javax.persistence.CascadeType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 
 public class Drl {
  
@@ -61,14 +58,15 @@ public class Drl {
 	  }
 		 
 	  
-	  public int getMsv() {
-	    return msv;
-	  }
+	public int getMsv() {
+	  return msv;
+	}
+	
+	public void setMsv(int msv) {
+	  this.msv = msv;
+	}
 
-	  public void setMsv(int msv) {
-	    this.msv = msv;
-	  }
-
+		
 	  public int getYthuc() {
 		    return ythuc;
 		  }

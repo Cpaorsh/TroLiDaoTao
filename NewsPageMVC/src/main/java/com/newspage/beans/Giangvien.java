@@ -9,6 +9,7 @@ public class Giangvien {
 	private String mgv;
 	private String hoten;
 	private String ngaysinh;
+	private String bomon;
 	private String chucvu;
 	private String lop;
 
@@ -43,6 +44,13 @@ public class Giangvien {
 	}
 	public void setNgaysinh(String ngaysinh) {
 		this.ngaysinh = ngaysinh;
+	}
+	
+	public String getBomon() {
+		return bomon;
+	}
+	public void setBomon(String bomon) {
+		this.bomon = bomon;
 	}
 	
 	public String getChucvu() {

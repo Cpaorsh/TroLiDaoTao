@@ -1,7 +1,9 @@
 package com.newspage.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 @Configuration
 
@@ -9,10 +11,14 @@ import org.springframework.context.annotation.Configuration;
 
 public class ApplicationContextConfig {
 
-   // Không cần ViewResolver
- 
- 
- 
-   // Các khai báo khác nếu cần thiết ...
+	  @Bean(name = "multipartResolver")
+	   public CommonsMultipartResolver multipartResolver() {
+	       CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+	       
+	       // Set Max Size...
+	       // commonsMultipartResolver.setMaxUploadSize(...);
+	       
+	       return commonsMultipartResolver;
+	   }
  
 }

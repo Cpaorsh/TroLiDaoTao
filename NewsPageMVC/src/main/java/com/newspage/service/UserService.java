@@ -5,7 +5,11 @@ import com.newspage.beans.User;
 
 public interface UserService {
 
-  int register(User user);
+  //int register(User user);
 
   User validateUser(Login login);
+  
+  User getUserById(String max);
+  
+  int changePassword (User user);
 }

@@ -1,39 +1,16 @@
 package com.newspage.beans;
 
-import javax.persistence.CascadeType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 
 public class User {
 
   private String max;
   private String username;
   private String password;
+  private String hoten;
+  private String chucvu;
+  private String lop;
   
-  @OneToOne(cascade = CascadeType.PERSIST)
-  @JoinColumn(name = "msv")
-  private Sinhvien sinhvien;
-  
-  public Sinhvien getSinhvien() {
-    return sinhvien;
-  }
-  public void setSinhvien(Sinhvien sinhvien) {
-    this.sinhvien = sinhvien;
-  }
 
-
-  @OneToOne(cascade = CascadeType.PERSIST)
-  @JoinColumn(name = "mgv")
-  private Giangvien giangvien;
-  
-  public Giangvien getGiangvien() {
-    return giangvien;
-  }
-
-  public void setGiangvien(Giangvien giangvien) {
-    this.giangvien = giangvien;
-  }
-  
   public String getMax() {
     return max;
   }
@@ -55,4 +32,25 @@ public class User {
     this.password = password;
   }
 
+  public String getHoten() {
+    return hoten;
+  }
+  public void setHoten(String hoten) {
+    this.hoten = hoten;
+  }
+  
+  public String getChucvu() {
+    return chucvu;
+  }
+  public void setChucvu(String chucvu) {
+    this.chucvu = chucvu;
+  }
+  
+  public String getLop() {
+    return lop;
+  }
+  public void setLop(String lop) {
+    this.lop = lop;
+  }
+  
 }

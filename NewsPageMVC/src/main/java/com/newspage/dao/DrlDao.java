@@ -19,10 +19,16 @@ JdbcTemplate template;
 	}    
 	  
 	
+	public int updateAv(Drl p){    
+		String sql="update drl set ythuc="+p.getYthuc()+", clbhoc="+p.getClbhoc()+", quyche="+p.getQuyche()+", vuotkho="+p.getQuyche()+", hoctap="+p.getHoctap()+", tsvgioi="+p.getTsvgioi()+", kqchaphanh="+p.getKqchaphanh()+", tgngoaikhoa="+p.getTgngoaikhoa()+", dangnn="+p.getDangnn()+", bieuduong="+p.getBieuduong()+", giupdo="+p.getGiupdo()+", tgdoanhoi="+p.getTgdoanhoi()+", ltythuc="+p.getYthuc()+", ltclbhoc="+p.getClbhoc()+", ltquyche="+p.getQuyche()+", ltvuotkho="+p.getQuyche()+", lthoctap="+p.getHoctap()+", lttsvgioi="+p.getTsvgioi()+", ltkqchaphanh="+p.getKqchaphanh()+", lttgngoaikhoa="+p.getTgngoaikhoa()+", ltdangnn="+p.getDangnn()+", ltbieuduong="+p.getBieuduong()+", ltgiupdo="+p.getGiupdo()+", lttgdoanhoi="+p.getTgdoanhoi()+", gvythuc="+p.getYthuc()+", gvclbhoc="+p.getClbhoc()+", gvquyche="+p.getQuyche()+", gvvuotkho="+p.getQuyche()+", gvhoctap="+p.getHoctap()+", gvtsvgioi="+p.getTsvgioi()+", gvkqchaphanh="+p.getKqchaphanh()+", gvtgngoaikhoa="+p.getTgngoaikhoa()+", gvdangnn="+p.getDangnn()+", gvbieuduong="+p.getBieuduong()+", gvgiupdo="+p.getGiupdo()+", gvtgdoanhoi="+p.getTgdoanhoi()+" where msv="+p.getMsv()+"";    
+		return template.update(sql);    
+	}
+	
+	
 	public int updateSv(Drl p){    
 		String sql="update drl set ythuc="+p.getYthuc()+", clbhoc="+p.getClbhoc()+", quyche="+p.getQuyche()+", vuotkho="+p.getVuotkho()+", hoctap="+p.getHoctap()+", tsvgioi="+p.getTsvgioi()+", kqchaphanh="+p.getKqchaphanh()+", tgngoaikhoa="+p.getTgngoaikhoa()+", dangnn="+p.getDangnn()+", bieuduong="+p.getBieuduong()+", giupdo="+p.getGiupdo()+", tgdoanhoi="+p.getTgdoanhoi()+" where msv="+p.getMsv()+"";    
 	    return template.update(sql);    
-	}    
+	}
 	public int updateLt(Drl p){    
 		String sql="update drl set ltythuc='"+p.getLtythuc()+"', ltclbhoc='"+p.getLtclbhoc()+"', ltquyche='"+p.getLtquyche()+"', ltvuotkho='"+p.getLtvuotkho()+"', lthoctap='"+p.getLthoctap()+"', lttsvgioi='"+p.getLttsvgioi()+"', ltkqchaphanh='"+p.getLtkqchaphanh()+"', lttgngoaikhoa='"+p.getLttgngoaikhoa()+"', ltdangnn='"+p.getLtdangnn()+"', ltbieuduong='"+p.getLtbieuduong()+"', ltgiupdo='"+p.getLtgiupdo()+"', lttgdoanhoi='"+p.getLttgdoanhoi()+"' where msv="+p.getMsv()+"";    
 	    return template.update(sql);    

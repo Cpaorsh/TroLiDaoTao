@@ -8,55 +8,55 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.newspage.beans.Page;
-import com.newspage.dao.PageDao;
+import com.newspage.beans.Doc;
+import com.newspage.dao.DocDao;
 
 @Controller
 public class HomeController {
 
 	@Autowired
-    PageDao dao;
+    DocDao dao;
 	
     @RequestMapping("/")
-	  public String pages(Model m){    
-	  List<Page> liss = dao.getPages();    
+	  public String docs(Model m){    
+	  List<Doc> liss = dao.getDocs();    
 	  m.addAttribute("liss",liss);  
 	  return "index";    
 	}
     
-    @RequestMapping(value="list/{pageid}")    
-    public String pagination(@PathVariable int pageid, Model m){  
-    	int totalRecord = 6;
-    	if(pageid==1){}    
+    @RequestMapping(value="list/{docid}")    
+    public String pagination(@PathVariable int docid, Model m){  
+    	int totalRecord = 5;
+    	if(docid==1){}    
         else{    
-            pageid=(pageid-1)*totalRecord+1;    
+            docid=(docid-1)*totalRecord+1;    
         }
     	int total = dao.getTotal();
     	
     	int numberpage = (int) Math.round(total/totalRecord +0.5);
     	m.addAttribute("numberpage", numberpage);
     	
-    	List<Page> listpagination = dao.getbyPagination(pageid, totalRecord); 
-    	m.addAttribute("listpagination", listpagination);
-        return "listpagi";    
+    	List<Doc> doclist = dao.getbyPagination(docid, totalRecord); 
+    	m.addAttribute("doclist", doclist);
+        return "doclist";    
     }
     
     @RequestMapping("/search")
-	  public String searchPages(Model m){    
-	  List<Page> liss = dao.getPages();    
+	  public String searchDocs(Model m){    
+	  List<Doc> liss = dao.getDocs();    
 	  m.addAttribute("liss",liss);  
 	  return "search";    
 	}
     @RequestMapping(value="/search/{se}")
-	public String searchPages(@PathVariable String se, Model m){    
-	  List<Page> liss = dao.findPages(se);    
+	public String searchDocs(@PathVariable String se, Model m){    
+	  List<Doc> liss = dao.findDocs(se);    
 	  m.addAttribute("liss",liss);  
 	  return "search";     
 	}
     
     @RequestMapping(value="category/{cate}")    
     public String showCate(@PathVariable String cate, Model m){  
-    	List<Page> liss = dao.findCategory(cate); 
+    	List<Doc> liss = dao.findCategory(cate); 
     	m.addAttribute("liss", liss);
         return "search";    
     }

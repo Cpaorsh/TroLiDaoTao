@@ -42,10 +42,22 @@
 	<!--<bean id="userDao" class="com.newspage.dao.UserDao">    
 		<property name="template" ref="jt"></property>    
 	</bean>-->
-	<bean id="pageDao" class="com.newspage.dao.PageDao">    
+	<bean id="docDao" class="com.newspage.dao.DocDao">    
 		<property name="template" ref="jt"></property>    
 	</bean>
 	<bean id="drlDao" class="com.newspage.dao.DrlDao">    
+		<property name="template" ref="jt"></property>    
+	</bean>
+	<bean id="ttcnDao" class="com.newspage.dao.TtcnDao">    
+		<property name="template" ref="jt"></property>    
+	</bean>
+	<bean id="kltnDao" class="com.newspage.dao.KltnDao">    
+		<property name="template" ref="jt"></property>    
+	</bean>
+	<bean id="detaittDao" class="com.newspage.dao.DetaittDao">    
+		<property name="template" ref="jt"></property>    
+	</bean>
+	<bean id="hockiDao" class="com.newspage.dao.HockiDao">    
 		<property name="template" ref="jt"></property>    
 	</bean>
 	

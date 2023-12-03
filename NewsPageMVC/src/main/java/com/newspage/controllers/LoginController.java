@@ -6,7 +6,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,7 +27,6 @@ public class LoginController {
   public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response) {
     ModelAndView mav = new ModelAndView("login");
     mav.addObject("login", new Login());
-
     return mav;
   }
 
@@ -38,19 +39,48 @@ public class LoginController {
 
     if (null != user) {
       mav = new ModelAndView("index");
-      //mav.addObject("name", user.getName());
+      //mav.addObject("name", user.getUsername());
       HttpSession session = request.getSession(true);
       
+      session.setAttribute("max", user.getMax());
       session.setAttribute("username", user.getUsername());
-      session.setAttribute("name", user.getSinhvien().getHoten());
-      session.setAttribute("role", user.getSinhvien().getChucvu());
+      session.setAttribute("name", user.getHoten());
+      session.setAttribute("role", user.getChucvu());
+      session.setAttribute("lop", user.getLop());
       
     } else {
       mav = new ModelAndView("login");
-      mav.addObject("message", "Username or Password is wrong!!");
+      mav.addObject("message", "Tên đăng nhập hoặc mật khẩu không chính xác!!");
     }
-
     return mav;
   }
+  
+//  @RequestMapping(value = "/changePassword", method = RequestMethod.GET)
+//  public ModelAndView showChange(HttpServletRequest request, HttpServletResponse response) {
+//	  int id = 1;
+//	  User user=UserDao.getUserById(id);
+//  @RequestMapping(value="usercurrent", method = RequestMethod.GET)    
+//  public String docdetail(Model m){    
+//	  int id =1;
+//	  m.addAttribute("doc", userService.getUserById(id));
+//      return "usercurrent";    
+//  }
+  
+	@RequestMapping(value = "/changePassword", method = RequestMethod.GET)
+	public ModelAndView showChange(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession(true);
+		String max = (String) session.getAttribute("id");
+		User user=userService.getUserById(max);
+		ModelAndView mav = new ModelAndView("userpassword");
+		mav.addObject("user", user);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/changeProcess", method = RequestMethod.POST)
+	public ModelAndView updateUser(HttpServletRequest request, HttpServletResponse response,
+	    @ModelAttribute("user") User user) {
+		userService.changePassword(user);
+		return new ModelAndView("usercurrent", "name", user.getUsername());
+	}
 
 }

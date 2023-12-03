@@ -34,7 +34,11 @@ public class DrlController {
     }    
     @RequestMapping(value="drl/savesv",method = RequestMethod.POST)    
     public String saveDrlSv(@ModelAttribute("drl") Drl drl){    
-    	drlDao.updateSv(drl);    
+    	if(drl.getGvtongdiem() == 0) {
+    		drlDao.updateAv(drl);
+    	}else {
+    		drlDao.updateSv(drl); 
+    	}
         return "redirect:/drl/drllist";    
     }
     

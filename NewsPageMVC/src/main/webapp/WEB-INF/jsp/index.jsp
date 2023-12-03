@@ -36,12 +36,10 @@
 		<br>
 		<h5>Faculties</h5>
 		<hr>
-		<div class="d-flex justify-content-between">
-			<a class="tag col-2" href="category/CNTT">Công Nghệ Thông Tin</a>
-			<a class="tag col-2" href="category/QTKD">Quản Trị Kinh Doanh</a>
-			<a class="tag col-2" href="category/KHDL">Khoa Học Dữ Liệu</a>
-			<a class="tag col-2" href="category/TY">Thú Y</a>
-			<a class="tag col-2" href="category/KTCK">Kĩ Thuật Cơ Khí</a>
+		<div class="d-flex ">
+			<a class="tag col-2" href="category/Điểm rèn luyện">Điểm rèn luyện</a>
+			<a class="tag col-2" href="category/KLTN & TTCN">KLTN & TTCN</a>
+			<a class="tag col-2" href="category/Học bổng">Học bổng</a>
 			<!-- <a href="#">All genres</a> -->
 		</div>
 	
@@ -49,18 +47,16 @@
 		<h5>Latest News</h5>
 		<hr>
 		<div class="row mb-2 py-5">
- 		<c:forEach var="page" items="${liss}" begin="1" end="6"> 
-			<div class="col-md-6">
-				<div class="card flex-md-row mb-4 box-shadow h-md-250">
+ 		<c:forEach var="doc" items="${liss}" begin="1" end="6"> 
+			<div class="col-md-12">
+				<div class="card flex-md-row mb-4 box-shadow">
 					<div class="card-body d-flex flex-column align-items-start">
-						<a class="text-dark" href="page/detailpage/${page.id}"><strong class="d-inline-block mb-2 text-success">
-							<h2>${page.title}</h2>
+						<a class="text-dark" href="doc/docdetail/${doc.id}"><strong class="d-inline-block mb-2 text-success">
+							<h2>${doc.title}</h2>
 						</strong></a>
-						<p class="noidung card-text mb-auto">${page.content}</p>
-						<p class="ngay mb-auto">${page.datec}</p>
+						<p class="noidung card-text mb-auto">${doc.content}</p>
+						<p class="ngay mb-auto">${doc.datec}</p>
 					</div>
-					<img class="card-img-right flex-auto d-none d-md-block" 
-					src="<c:url value="/resources/img/memories-of-a-geisha.jpg"/>"  alt="Card image cap">
 				</div>
 			</div>
 		</c:forEach>
@@ -68,7 +64,7 @@
 		</div>
 		
 	
-	<main role="main" class="container">
+<!-- 	<main role="main" class="container">
 		<div class="row">
 		<div class="col-md-8 blog-main">
 			<h3 class="pb-3 mb-4 font-italic border-bottom">Recommendations</h3>
@@ -99,7 +95,7 @@
 			</div>
 		</aside>
 		</div>
-	</main>
+	</main> -->
 </div>
 	
 <jsp:include page="_footer.jsp" />

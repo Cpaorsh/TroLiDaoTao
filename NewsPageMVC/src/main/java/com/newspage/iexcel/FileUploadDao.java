@@ -6,12 +6,15 @@ import java.util.List;
 import java.util.Map;
 
 import com.newspage.beans.Sinhvien;
+import com.newspage.beans.User;
 
 public class FileUploadDao extends BaseDAO{
 	
 	public boolean saveFileDataInDB(List<Sinhvien> sinhvienList){
-		String sql = "insert into sinhvien (MSV, HOTEN, NGAYSINH, LOP, CHUCVU) "
-				+ " VALUES (:msv, :hoten, :ngaysinh, :lop, :chucvu)";
+		String sql = "insert into users (MAX, PASSWORD) values(:msv, :ngaysinh)";
+		String sqll = "insert into sinhvien (MSV, HOTEN, NGAYSINH, LOP, CHUCVU) VALUES (:msv, CONCAT(:hoten,' ',:dem), :ngaysinh, :lop, :chucvu)"; 
+		String sqlll = "insert into drl (msv) values(:msv)";
+
 		try {
 			List<Map<String, String>> batchUpdateParams = new ArrayList<>();
 
@@ -22,18 +25,22 @@ public class FileUploadDao extends BaseDAO{
 				paramMap.put("ngaysinh", vo.getNgaysinh());
 				paramMap.put("lop", vo.getLop());
 				paramMap.put("chucvu", vo.getChucvu());
+				paramMap.put("dem", vo.getDem());
+				
 				batchUpdateParams.add(paramMap);
 			}
-
 			getNamedParamJdbcTemplate().batchUpdate(sql, batchUpdateParams.toArray(new Map[batchUpdateParams.size()] ));
+			getNamedParamJdbcTemplate().batchUpdate(sqll, batchUpdateParams.toArray(new Map[batchUpdateParams.size()] ));
+			getNamedParamJdbcTemplate().batchUpdate(sqlll, batchUpdateParams.toArray(new Map[batchUpdateParams.size()] ));
 
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
 
 		return true;
-
 	}
+	
 
 }

@@ -29,9 +29,9 @@
 	<h1>Tải lên danh sách sinh viên</h1>
 	<br>
  
-	<form method="POST" action="${pageContext.request.contextPath}/upload"
-		enctype="multipart/form-data">
-		<input type="file" name="file" /> <input type="submit" value="Submit" />
+	<form method="POST" action="${pageContext.request.contextPath}/upload" enctype="multipart/form-data">
+		<input type="file" name="file" /> 
+		<input type="submit" value="Submit" />
 	</form>
   
   	<br>

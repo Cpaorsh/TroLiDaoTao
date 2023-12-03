@@ -34,7 +34,7 @@ public class FileUploadService {
 			sheet = workbook.getSheetAt(0);
 
 			/*Build the header portion of the Output File*/
-			String headerDetails= "Stt,Msv,Hoten,Ngaysinh,Lop,Cc,Kt,Chucvu";
+			String headerDetails= "Stt,Msv,Hoten,Dem,Ngaysinh,Lop,Cc,Kt,Chucvu";
 			String headerNames[] = headerDetails.split(",");
 
 			/*Read and process each Row*/
@@ -44,24 +44,25 @@ public class FileUploadService {
 			while(rowIterator.hasNext())
 			{
 				Row row = rowIterator.next();
-				//Read and process each column in row
-				Sinhvien excelTemplateVO = new Sinhvien();
-				int count=0;
-				
-				while(count<headerNames.length){
-					if(count==1 || count==2 || count==3 || count==4 || count== 7){
-						String methodName = "set"+headerNames[count];
-						String inputCellValue = getCellValueBasedOnCellType(row,count++);
-						setValueIntoObject(excelTemplateVO, Sinhvien.class, methodName, "java.lang.String", inputCellValue);
+				if (row.getRowNum() > 9) {
+					//Read and process each column in row
+					Sinhvien excelTemplateVO = new Sinhvien();
+					int count=0;
+					
+					while(count<headerNames.length){
+						if(count==1 || count==2 || count==3 || count==4 || count==5 || count== 8){
+							String methodName = "set"+headerNames[count];
+							String inputCellValue = getCellValueBasedOnCellType(row,count++);
+							setValueIntoObject(excelTemplateVO, Sinhvien.class, methodName, "java.lang.String", inputCellValue);
+						}
+						else {
+							count++;
+						}
 					}
-					else {
-						count++;
-					}
+	
+					sinhvienList.add(excelTemplateVO);
 				}
-
-				sinhvienList.add(excelTemplateVO);
 			}
-			sinhvienList.remove(0); 
 			fileUploadDao.saveFileDataInDB(sinhvienList);
 
 		}

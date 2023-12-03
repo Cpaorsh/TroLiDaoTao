@@ -21,13 +21,16 @@
 		<div class="clear"> </div>
 		<p><span>Address: Trau Quy - Gia Lam - Ha Noi</span><br />
 		Phone: 84.024.62617586 - Fax: 84 024 62617586 / webmaster@vnua.edu.vn  </p>
-		<p style="margin-top: 5px; text-align: left; vertical-align: middle;">Copyright © 2015 VNUA. All rights reserved.  
+		<p>Copyright © 2015 VNUA. All rights reserved.  </p>
+		<span style="margin-top: 5px; text-align: left; vertical-align: middle; display: flex;">
+			
 			<a href="https://www.facebook.com/hocviennongnghiep" rel="nofollow" title="facebook"><img alt="Facebook" src="/NewsPageMVC/resources/img/facebook.png"  /></a>
 			<a rel="nofollow" title="google"><img alt="google" src="/NewsPageMVC/resources/img/google.png?w=29" /></a>
 			<a href="https://www.instagram.com/hocviennongnghiepvietnam/" rel="nofollow" title="instragram"><img alt="" src="/NewsPageMVC/resources/img/instagram.png" /></a>
 			<a rel="nofollow" title="facebook"><img alt="Twitter" src="/NewsPageMVC/resources/img/twitter.png?w=29" /></a>
 			<a href="https://www.youtube.com/channel/UC_O9ofPYoZ_zYvWuE8ITMeg" rel="nofollow" title="youtube"><img alt="Youtube" src="/NewsPageMVC/resources/img/youtube.png" /></a>
-			</p>
+			
+		</span>
 		</div>
     </div>
 </div>

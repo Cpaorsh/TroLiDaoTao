@@ -30,18 +30,16 @@
 	<h5>result</h5>
 	<hr>
 	<div class="row mb-2 py-5">
-		<c:forEach var="page" items="${liss}"> 
-		<div class="col-md-6">
+		<c:forEach var="doc" items="${liss}"> 
+		<div class="col-12">
 			<div class="card flex-md-row mb-4 box-shadow h-md-250">
 				<div class="card-body d-flex flex-column align-items-start">
-					<a class="text-dark" href="page/detailpage/${page.id}"><strong class="d-inline-block mb-2 text-success">
-						<h2>${page.title}</h2>
+					<a class="text-dark" href="doc/docdetail/${doc.id}"><strong class="d-inline-block mb-2 text-success">
+						<h2>${doc.title}</h2>
 					</strong></a>
-					<p class="noidung card-text mb-auto">${page.content}</p>
-					<p class="ngay mb-auto">${page.datec}</p>
+					<p class="noidung card-text mb-auto">${doc.content}</p>
+					<p class="ngay mb-auto">${doc.datec}</p>
 				</div>
-				<img class="card-img-right flex-auto d-none d-md-block" 
-				src="<c:url value="/resources/img/memories-of-a-geisha.jpg"/>"  alt="Card image cap">
 			</div>
 		</div>
 	</c:forEach>

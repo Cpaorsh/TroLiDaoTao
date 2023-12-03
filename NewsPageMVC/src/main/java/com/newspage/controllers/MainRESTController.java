@@ -11,53 +11,53 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
  
-import com.newspage.beans.Page;
-import com.newspage.dao.PageDao;
+import com.newspage.beans.Doc;
+import com.newspage.dao.DocDao;
  
 @Controller
 
 public class MainRESTController {
  
  @Autowired
- PageDao pageJson;
+ DocDao pageJson;
  
  @RequestMapping(value = "/pageJson", method = RequestMethod.GET)
  @ResponseBody
- public List<Page> listEmployee() {
-  return pageJson.getPages();
+ public List<Doc> listEmployee() {
+  return pageJson.getDocs();
  }
  
  @RequestMapping(value = "/pageJson/search/{name}", method = RequestMethod.GET)
  @ResponseBody
- public List<Page> listSearch(@PathVariable String name) {
-  return pageJson.findPages(name);
+ public List<Doc> listSearch(@PathVariable String name) {
+  return pageJson.findDocs(name);
  }
  
  @RequestMapping(value = "/pageJson/{id}", method = RequestMethod.GET)
  @ResponseBody
- public Page findEmployee(@PathVariable("id") int pageId) {
-  return pageJson.getPageById(pageId);
+ public Doc findEmployee(@PathVariable("id") int docId) {
+  return pageJson.getDocById(docId);
  }
  
  @RequestMapping(value = "/pageJson/{id}", method = RequestMethod.POST)
  @Transactional(propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
- public String saveEmployee(@PathVariable("id") Page pageId) throws Exception {
-  pageJson.save(pageId);
-  return "redirect:/pageJson/" + pageId;
+ public String saveEmployee(@PathVariable("id") Doc docId) throws Exception {
+  pageJson.save(docId);
+  return "redirect:/pageJson/" + docId;
  }
  
  @RequestMapping(value = "/pageJson/{id}", method = RequestMethod.PUT)
  @Transactional(propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
- public String updateEmployee(@PathVariable("id") Page pageId) throws Exception {
-  pageJson.update(pageId);
-  return "redirect:/pageJson/" + pageId;
+ public String updateEmployee(@PathVariable("id") Doc docId) throws Exception {
+  pageJson.update(docId);
+  return "redirect:/pageJson/" + docId;
  }
  
  @RequestMapping(value = "/pageJson/{id}", method = RequestMethod.DELETE)
  @Transactional(propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
  @ResponseBody
- public String deleteEmployee(@PathVariable("id") int pageId) throws Exception {
-  pageJson.delete(pageId);
+ public String deleteEmployee(@PathVariable("id") int docId) throws Exception {
+  pageJson.delete(docId);
   return "OK";
  }
  

@@ -11,12 +11,21 @@ public class UserServiceImpl implements UserService {
   @Autowired
   public UserDao userDao;
 
-  public int register(User user) {
-    return userDao.register(user);
-  }
+//  public int register(User user) {
+//    return userDao.register(user);
+//  }
 
   public User validateUser(Login login) {
     return userDao.validateUser(login);
   }
+  
+  public User getUserById(String max) {
+  	return userDao.getUserById(max);
+  }
+  
+  public int changePassword (User user) {
+	return userDao.changePassword(user);  
+  }
+  
 
 }
