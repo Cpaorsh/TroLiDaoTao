@@ -17,6 +17,7 @@
 
 </head>
 <body>
+
 <%
 	String max = (String)session.getAttribute("max"); 
 	String role = (String)session.getAttribute("role");
@@ -31,11 +32,9 @@
    <div class="col-md-12 mx-auto">
    
    <div class="bg-light d-flex justify-content-between align-items-center">
-   <h4 class="p-3">Danh sách sinh viên đã đăng kí Thực tập chuyên ngành</h4>
-   <% if (role!=null && ( role.equals("sv") || role.equals("loptruong")) && duyet!=null && duyet.equals("1")) { %>
-   <a class="btn btn-primary" href="ttcnedit/<%=max%>">Đơn đăng kí </a>
-   <% }else if(role!=null && role.equals("sv") && duyet==null){ %>
-   <a class="btn btn-primary" href="ttcnadd/<%=max%>">Đăng kí </a>
+   <h4 class="p-3">Danh sách SV đăng kí Thực tập chuyên ngành</h4>
+   <% if (role!=null && (role.equals("sv")|| role.equals("loptruong")) && duyet!=null) { %>
+   <a class="btn btn-primary" href="ttcnadd/<%=max%>">Hủy đăng kí </a>
    <% } %>
    </div>
    <br>
@@ -45,12 +44,9 @@
 		    <tr>
 		      <th scope="col">STT</th>
 		      <th scope="col">Họ tên</th>
-		      <th scope="col">Mã SV</th>
+		      <th scope="col">MSV</th>
 		      <th scope="col">Lớp</th>
-		      <th scope="col">Tên đề tài</th>
-		      <th scope="col">Giảng viên hướng dẫn</th>
-		      <th scope="col">Cơ sở thực tập</th>
-		      <th scope="col">Bộ môn quản lí</th>
+		      <th scope="col">Lí do từ chối</th>
 		      <th scope="col">Chức năng</th>
 		    </tr>
 		  </thead>
@@ -58,18 +54,15 @@
 		  <c:forEach var="ttcn" items="${list}" varStatus="count"> 
 		    <tr>
 		      <th scope="row">${count.count}</th>
-		      <td >${ttcn.sinhvien.hoten}</td>
-		      <td class="tdot">${ttcn.sinhvien.msv}</td>
+		      <td>${ttcn.sinhvien.hoten}</td>
+		      <td>${ttcn.sinhvien.msv}</td>
 		      <td>${ttcn.sinhvien.lop}</td>
-		      <td >${ttcn.dttt.tendt}</td>
-		      <td>${ttcn.dttt.giangvien.hoten}</td>
-		      <td>${ttcn.cstt}</td>
-		      <td>${ttcn.dttt.giangvien.bomon}</td>
-			  <td>
-			   <% if( role!=null && role.equals("truongkhoa"))  { %>
-			   <a class="btn btn-sm btn-outline-danger" href="dtttduyet/${dttt.mdt}">Xét duyệt</a>
+		      <td>${ttcn.lidotc}</td>
+			   <td>
+			   <%if(role!=null && role.equals("tldt"))  { %>
+			   <a class="btn btn-sm btn-outline-primary" href="ttcnduyet/${ttcn.msv}">Xét duyệt</a>
 			   <% } %>
-			  </td> 
+			   </td> 
 		    </tr>
 		    </c:forEach>
 		  </tbody>

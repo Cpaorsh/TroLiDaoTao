@@ -22,7 +22,6 @@ String blockL = "fail";
 String blockS = "fail";
 if(rolea!=null){
 	if(rolea.equals("loptruong"))  {
-		blockS = "blocli";
 		blockG = "blocli";
 	}else if(rolea.equals("gvcn")){
 		blockS = "blocli";

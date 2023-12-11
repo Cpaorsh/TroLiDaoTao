@@ -7,12 +7,14 @@
 		<a class="text-muted" href="/NewsPageMVC/subscribe">Subscribe</a>
 		</div> -->
 		
-		<div class="col-8 text-start d-flex d-none d-md-block">
-			<img class="" src="/NewsPageMVC/resources/img/vnua.png" alt="hahah" style="width:auto">
-			<div class="">
+		<div class="col-10 text-start d-none d-md-flex">
+			<img class="col-3" src="/NewsPageMVC/resources/img/vnua.png" alt="hahah" style="width:7vw; height:7vw;">
+			<div class="col-4 text-center">
 				<a class="blog-header-logo text-white" href="/NewsPageMVC"><b>TRỢ LÝ ĐÀO TẠO</b></a>
-				<p class="text-white">Học viện Nông nghiệp Việt Nam</p>
+				<p class="text-success">Học viện Nông nghiệp Việt Nam</p>
 			</div>
+			<img class="col-3" src="/NewsPageMVC/resources/img/fita.png" alt="hahah" style="width:7vw">
+			
 		</div>
 		
 		<div class="col-8 text-start d-md-none">
@@ -41,7 +43,7 @@
 			    <li >
 					<a  href="#">TTCN & KLTN</a>
 			    	<ul class="sub">
-			        	<li><a  href="/NewsPageMVC/detaitt/detaittlist">Đề tài TTCN</a></li>
+			        	<li><a  href="/NewsPageMVC/dttt/dtttlist">Đề tài TTCN</a></li>
 						<li><a href="/NewsPageMVC/ttcn/ttcnlist">TTCN</a></li>
 						<li><a  href="/NewsPageMVC/kltn/kltnlist">Đề tài KLTN</a></li>	
 						<li><a  href="/NewsPageMVC/hocki/hockilist">Kì học trước</a></li>

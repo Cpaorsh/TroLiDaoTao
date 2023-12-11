@@ -1,12 +1,12 @@
 package com.newspage.beans;
 
-public class Detaitt {
+public class Dttt {
 	private int mdt;
 	private String tendt;
 	private String mgv;
 	private String lidotc;
 	private int idhk;
-	private Byte duyet;
+	private String duyet;
 	private Giangvien giangvien;
 	
 	public Giangvien getGiangvien() {
@@ -51,10 +51,10 @@ public class Detaitt {
 	    this.idhk = idhk;    
 	}
 	
-	public Byte getDuyet() {    
+	public String getDuyet() {    
 	    return duyet;    
 	}    
-	public void setDuyet(Byte duyet) {    
+	public void setDuyet(String duyet) {    
 	    this.duyet = duyet;    
 	}
 }

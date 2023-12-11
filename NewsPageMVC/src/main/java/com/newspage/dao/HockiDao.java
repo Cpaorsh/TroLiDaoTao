@@ -31,13 +31,18 @@ public class HockiDao {
 		}
 	}
 	
+	public int deleteHk(int id){    
+	    String sql="delete from hocki where id="+id+"";    
+	    return template.update(sql);    
+	} 
+	
 	public Hocki getLastHk(){  
 		String sql= "select * from hocki order by id desc limit 1";
 	    return template.queryForObject(sql,new BeanPropertyRowMapper<Hocki>(Hocki.class));    
 	}
 	
 	public List<Hocki> getHks(){    
-	    return template.query("select * from hocki",new RowMapper<Hocki>(){    
+	    return template.query("select * from hocki order by id desc",new RowMapper<Hocki>(){    
 	        public Hocki mapRow(ResultSet rs, int row) throws SQLException {    
 	        	Hocki h=new Hocki();    
 	            h.setId(rs.getInt(1));    

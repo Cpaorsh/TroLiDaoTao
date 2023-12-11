@@ -15,6 +15,10 @@
 
     <link type="text/css" href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 
+<%
+	String role = (String)session.getAttribute("role");
+	String max = (String)session.getAttribute("max");
+%>
 </head>
 <body>
 
@@ -28,7 +32,7 @@
    
    <div class="bg-light d-flex justify-content-between align-items-center">
 	<h4 class="p-3">Danh sách đề tài khóa luận tốt nghiệp</h4>
-	<a class="btn btn-primary" href="kltnadd">Thêm đề tài mới</a>
+	<a class="btn btn-primary" href="/NewsPageMVC/kltn/kltnadd">Thêm đề tài mới</a>
    </div>
    <br>
    <br>
@@ -56,9 +60,14 @@
 		      <td>${kltn.sinhvien.msv}</td>
 		      <td>${kltn.sinhvien.lop}</td>
 			   <td>
-			   <a class="btn btn-sm btn-outline-primary" href="kltnedit/${kltn.mkl}">Sửa</a>
-			   <a class="btn btn-sm btn-outline-danger" href="kltndelete/${kltn.mkl}">Xóa</a>
-			   <a class="btn btn-sm btn-outline-success" href="kltnregi/${kltn.mkl}">Đăng kí</a>
+				<%if(role!=null && role.equals("tldt")){ %>
+			   		<a class="btn btn-sm btn-outline-primary" href="/NewsPageMVC/kltn/kltnedit/${kltn.mkl}">Sửa</a>
+			   		<a class="btn btn-sm btn-outline-danger" href="/NewsPageMVC/kltn/kltndelete/${kltn.mkl}">Xóa</a>
+			  	<%}else if(role==null && max!=null){ %>
+			  	<c:if test="${kltn.msv == null}">
+			   		<a class="btn btn-sm btn-outline-success" href="/NewsPageMVC/kltn/kltnregi/${kltn.mkl}">Đăng kí</a>
+			   	</c:if>
+			   	<%} %>
 			   </td> 
 		    </tr>
 		    </c:forEach>

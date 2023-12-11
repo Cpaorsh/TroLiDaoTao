@@ -44,7 +44,7 @@ public class UserDaoImpl implements UserDao {
   
 	public User validateUser(Login login) {
 		if (login.getUsername().matches("-?\\d+")) {
-			String sql = "select * from users INNER JOIN sinhvien ON users.max = sinhvien.msv where username='" + login.getUsername() + "' and password='" + login.getPassword()+ "'";
+			String sql = "select * from users INNER JOIN sinhvien ON users.max = sinhvien.msv left join ttcn on users.max=ttcn.msv left join kltn on users.max=kltn.msv where username='" + login.getUsername() + "' and password='" + login.getPassword()+ "'";
 			List<User> users = jdbcTemplate.query(sql, new UserMapper());
 			return users.size() > 0 ? users.get(0) : null;
 		}else {
@@ -64,7 +64,9 @@ class UserMapper implements RowMapper<User> {
     user.setHoten(rs.getString("hoten"));
     user.setChucvu(rs.getString("chucvu"));
     user.setLop(rs.getString("lop"));
-
+    if (rs.getString("duyet") != null) {
+    	user.setDuyet(rs.getString("duyet"));///ttcn.duyet?
+    }
     return user;
   }
 }

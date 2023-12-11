@@ -42,7 +42,7 @@
 			
 		</form:form>
 		<br>
-		<p id="backtoblog"><a href="/NewsPageMVC">&larr; Trở lại trang chủ</a></p>
+		<p id="backtoblog"><a class="text-dark" href="/NewsPageMVC">&larr; Trở lại trang chủ</a></p>
 		<p style="font-style:italic; font-size:1.3vw; color:red;">${message}</p>
 	</div>
 </body>

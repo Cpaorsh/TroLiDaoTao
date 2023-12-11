@@ -50,7 +50,7 @@
 		      <td>${drl.lttongdiem}</td>
 		      <td>${drl.gvtongdiem}</td>
 			   <td>
-			   <a class="btn btn-sm btn-outline-primary" href="drledit/${drl.msv}">Xem</a>
+			   <a class="btn btn-sm btn-outline-primary" href="/NewsPageMVC/drl/drledit/${drl.msv}">Xem</a>
 			   </td> 
 		    </tr>
 		    </c:forEach>

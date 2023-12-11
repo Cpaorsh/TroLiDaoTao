@@ -29,16 +29,16 @@
     <div class="col-md-8 mx-auto border">
 	    <div class="bg-light p-3 mb-3"><h4>Chỉnh sửa đề tài</h4></div>
 	    
-		    <form:form method="post" action="/NewsPageMVC/kltn/editsave" class="p-3">
+		    <form:form method="post" action="/NewsPageMVC/dttt/editsave" class="p-3">
 				
 				<div class="mb-3">
-				  <label for="mkl" class="form-label">ID</label>
-				  <form:input readonly="true" class="form-control"  path="mkl" />
+				  <label for="mdt" class="form-label">ID</label>
+				  <form:input readonly="true" class="form-control"  path="mdt" />
 				</div>
 				
 				<div class="mb-3">
-				  <label for="detai" class="form-label">Tên đề tài</label>
-				  <form:input class="form-control"  path="detai" />
+				  <label for="tendt" class="form-label">Tên đề tài</label>
+				  <form:input class="form-control"  path="tendt" />
 				</div>
 			    <div class="mb-3">
 				  <label for="mgv" class="form-label">Giảng viên</label>
@@ -48,11 +48,7 @@
 					</c:forEach>
 				  </form:select>
 				</div>
-				
-				<div class="mb-3">
-				  <label for="cstt" class="form-label">Cơ sở thực tập</label>
-				  <form:textarea class="form-control"  path="cstt" />
-				</div>
+
 				<div class="mb-3">
 				  <label for="idhk" class="form-label">Học kì</label>
 				  <form:select class="form-control"  path="idhk">

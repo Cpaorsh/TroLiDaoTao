@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.newspage.beans.Hocki;
+import com.newspage.beans.Dttt;
 import com.newspage.beans.Ttcn;
 import com.newspage.dao.HockiDao;
 import com.newspage.dao.TtcnDao;
+import com.newspage.dao.DtttDao;
 
 @Controller
 public class TtcnController {
@@ -23,6 +25,9 @@ public class TtcnController {
     TtcnDao ttcnDao;
 	@Autowired
 	HockiDao hockiDao;
+	@Autowired
+	DtttDao dtttDao;
+	
 	
     @RequestMapping("/ttcn/ttcnlist")    
     public String ttcnlist(Model m){ 
@@ -32,6 +37,18 @@ public class TtcnController {
         m.addAttribute("list",list);  
         return "ttcnlist";    
     }
+    @RequestMapping("/ttcn/ttcnlistcd")    
+    public String ttcnunlist(Model m){    
+        List<Ttcn> list = ttcnDao.getTtcnCd();    
+        m.addAttribute("list",list);  
+        return "ttcnunlist";    
+    }
+    @RequestMapping("/ttcn/ttcnlistkd")    
+    public String ttcnun(Model m){    
+        List<Ttcn> list = ttcnDao.getTtcnKd();    
+        m.addAttribute("list",list);  
+        return "ttcnunlist";    
+    }
     
     @RequestMapping("/ttcn/ttcnlist/{id}")    
     public String ttcnlist(@PathVariable int id, Model m){    
@@ -40,22 +57,42 @@ public class TtcnController {
         return "ttcnlist";    
     }
     
-    @RequestMapping("ttcn/ttcnadd")    
-    public String addttcn(Model m){    
-        m.addAttribute("command", new Ttcn());  
-        return "ttcnadd";   
-    }        
-    @RequestMapping(value="ttcn/addsave",method = RequestMethod.POST)    
-    public String addsave(@ModelAttribute("ttcn") Ttcn ttcn){    
-    	ttcnDao.saveTtcn(ttcn);
-    		return "redirect:/ttcn/ttcnlist";   
-    }  
+
+    
+
+    
+    
+    @RequestMapping("ttcn/ttcnadd/{msv}")    
+    public String addttcn(@PathVariable String msv, Model m){    
+    	Ttcn ttcn=ttcnDao.getTtcnById(msv);
+    	if (ttcn == null) {
+    		ttcnDao.addTtcn(msv);
+    	}
+    	return "ttcnlist";   
+    }   
+    
+    
+    @RequestMapping(value="ttcn/ttcnduyet/{id}")    
+    public String duyetttcn(@PathVariable String id, Model m){    
+        Ttcn ttcn=ttcnDao.getTtcnById(id);    
+        m.addAttribute("command",ttcn);  
+        return "ttcnduyet";    
+    }    
+    @RequestMapping(value="ttcn/duyetsave",method = RequestMethod.POST)    
+    public String duyetsave(@ModelAttribute("ttcn") Ttcn ttcn){    
+    	ttcnDao.duyetTtcn(ttcn);
+    		return "redirect:/ttcn/ttcnlist";
+    } 
     
 
 
     @RequestMapping(value="ttcn/ttcnedit/{id}")    
     public String editttcn(@PathVariable String id, Model m){    
-        Ttcn ttcn=ttcnDao.getTtcnById(id);    
+    	Hocki hocki = hockiDao.getLastHk();
+    	int idhk =  hocki.getId();
+    	List<Dttt> dt = dtttDao.getDts(idhk);    
+        m.addAttribute("dt",dt);
+    	Ttcn ttcn=ttcnDao.getTtcnById(id);    
         m.addAttribute("command",ttcn);  
         return "ttcnedit";    
     }    
@@ -68,8 +105,13 @@ public class TtcnController {
     
     
     @RequestMapping(value="ttcn/ttcndelete/{id}",method = RequestMethod.GET)    
-    public String delete(@PathVariable String id){    
-    	ttcnDao.deleteTtcn(id);    
+    public String delete(@PathVariable String id){
+    	Ttcn ttcn=ttcnDao.getTtcnById(id);
+    	if (ttcn != null) {
+    		ttcnDao.deleteTtcn(id);
+    	} else {
+    		
+    	}
         return "redirect:/ttcn/ttcnlist";    
     }
 }

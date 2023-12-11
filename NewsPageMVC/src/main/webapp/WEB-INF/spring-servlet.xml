@@ -54,10 +54,16 @@
 	<bean id="kltnDao" class="com.newspage.dao.KltnDao">    
 		<property name="template" ref="jt"></property>    
 	</bean>
-	<bean id="detaittDao" class="com.newspage.dao.DetaittDao">    
+	<bean id="dtttDao" class="com.newspage.dao.DtttDao">    
 		<property name="template" ref="jt"></property>    
 	</bean>
 	<bean id="hockiDao" class="com.newspage.dao.HockiDao">    
+		<property name="template" ref="jt"></property>    
+	</bean>
+	<bean id="giangvienDao" class="com.newspage.dao.GiangvienDao">    
+		<property name="template" ref="jt"></property>    
+	</bean>
+	<bean id="sinhvienDao" class="com.newspage.dao.SinhvienDao">    
 		<property name="template" ref="jt"></property>    
 	</bean>
 	

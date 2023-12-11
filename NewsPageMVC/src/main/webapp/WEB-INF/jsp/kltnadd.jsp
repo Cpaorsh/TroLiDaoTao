@@ -32,23 +32,28 @@
 		    <form:form method="post" action="addsave" class="p-3">
 
 			    <div class="mb-3">
-				  <label for="title" class="form-label">Tên đề tài</label>
+				  <label for="detai" class="form-label">Tên đề tài</label>
 				  <form:input class="form-control" placeholder="Tên đề tài" path="detai" />
 				</div>
 			    <div class="mb-3">
-				  <label for="content" class="form-label">Giảng viên</label>
-				  <form:textarea class="form-control" placeholder="Giảng viên" path="mgv" />
+				  <label for="mgv" class="form-label">Giảng viên</label>
+				  <form:select class="form-control"  path="mgv">
+				  	<c:forEach items="${gv}" var="gv">
+						<option value="${gv.mgv}">${gv.hoten}</option> 
+					</c:forEach>
+				  </form:select>
+				</div>
+
+				<div class="mb-3">
+				  <label for="cstt" class="form-label">Cơ sở thực tập</label>
+				  <form:textarea class="form-control" placeholder="Cơ sở thực tập" path="cstt" />
 				</div>
 				<div class="mb-3">
-				  <label for="content" class="form-label">Sinh viên</label>
-				  <form:textarea class="form-control" placeholder="Sinh viên" path="msv" />
-				</div>
-				<div class="mb-3">
-				  <label for="category" class="form-label">Category</label>
-				  <form:select class="form-control" placeholder="Category" path="hocki">
-				  	<form:option value="Điểm rèn luyện"></form:option>
-    				<form:option value="KLTN & TTCN"></form:option>
-    				<form:option value="Học bổng"></form:option>    				
+				  <label for="idhk" class="form-label">Học kì</label>
+				  <form:select class="form-control"  path="idhk">
+					<c:forEach items="${hk}" var="hk">
+						<form:option value="${hk.id}">${hk.tenhk}</form:option> 
+					</c:forEach>
 				  </form:select>
 				</div>
 				<button type="submit" class="btn btn-primary">Đăng kí</button>

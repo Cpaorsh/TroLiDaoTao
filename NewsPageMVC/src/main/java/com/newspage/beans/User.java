@@ -9,6 +9,7 @@ public class User {
   private String hoten;
   private String chucvu;
   private String lop;
+  private String duyet;
   
 
   public String getMax() {
@@ -53,4 +54,10 @@ public class User {
     this.lop = lop;
   }
   
+	public String getDuyet() {    
+	    return duyet;    
+	}    
+	public void setDuyet(String duyet) {    
+	    this.duyet = duyet;    
+	}
 }

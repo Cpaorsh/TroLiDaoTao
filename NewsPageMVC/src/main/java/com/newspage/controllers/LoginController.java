@@ -31,14 +31,14 @@ public class LoginController {
   }
 
   @RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
-  public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response,
-      @ModelAttribute("login") Login login) {
+  public String loginProcess(HttpServletRequest request, HttpServletResponse response,
+      @ModelAttribute("login") Login login, Model m) {
     ModelAndView mav = null;
 
     User user = userService.validateUser(login);
 
     if (null != user) {
-      mav = new ModelAndView("index");
+      //mav = new ModelAndView("index");
       //mav.addObject("name", user.getUsername());
       HttpSession session = request.getSession(true);
       
@@ -47,12 +47,16 @@ public class LoginController {
       session.setAttribute("name", user.getHoten());
       session.setAttribute("role", user.getChucvu());
       session.setAttribute("lop", user.getLop());
+      session.setAttribute("duyet", user.getDuyet());
       
+      return "redirect:/";
     } else {
-      mav = new ModelAndView("login");
-      mav.addObject("message", "Tên đăng nhập hoặc mật khẩu không chính xác!!");
+      //mav = new ModelAndView("login");
+      //mav.addObject("message", "Tên đăng nhập hoặc mật khẩu không chính xác!!");
+      m.addAttribute("message", "Tên đăng nhập hoặc mật khẩu không chính xác!!");  
+      return "login"; 
     }
-    return mav;
+    
   }
   
 //  @RequestMapping(value = "/changePassword", method = RequestMethod.GET)

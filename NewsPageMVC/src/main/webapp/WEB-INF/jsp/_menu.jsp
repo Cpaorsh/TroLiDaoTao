@@ -28,9 +28,9 @@
 	    </li>
 	    <%if(max!=null)  { %>
 	    <li>
-	    	<% if(role==null)  { %>
+	    	<% if(role.equals("sv")) { %>
 	    	<a  href="/NewsPageMVC/drl/drledit/<%=max %>">Điểm Rèn Luyện</a>
-	    	<% }else if(role.equals("gvcn"))  { %>	    
+	    	<% }else if(role.equals("gv") || (role.equals("loptruong")))  { %>	    
 			<a  href="/NewsPageMVC/drl/drllist/<%=lop %>">Điểm Rèn Luyện</a>
 			<% }else { %>
 	    	<a  href="/NewsPageMVC/drl/drllist/">Điểm Rèn Luyện</a>
@@ -38,12 +38,24 @@
 	    </li>
 	    <% } %>
 	    <li >
-			<a  href="#">TTCN & KLTN</a>
+			<a  href="#">TTCN</a>
 	    	<ul class="sub">
-	        	<li><a  href="/NewsPageMVC/detaitt/detaittlist">Đề tài TTCN</a></li>
-				<li><a href="/NewsPageMVC/ttcn/ttcnlist">TTCN</a></li>
-				<li><a  href="/NewsPageMVC/kltn/kltnlist">Đề tài KLTN</a></li>	
-				<li><a  href="/NewsPageMVC/hocki/hockilist">Kì học trước</a></li>
+	    		<li><a  href="/NewsPageMVC/dttt/dtttlist">Đề tài TTCN</a></li>
+	        	<li><a  href="/NewsPageMVC/ttcn/ttcnlist">SV đã đăng kí TTCN</a></li>
+				<li><a  href="/NewsPageMVC/dttt/dtttlistcd">Đề tài chờ duyệt</a></li>
+				<li><a  href="/NewsPageMVC/ttcn/ttcnlistcd">Đăng kí chờ duyệt</a></li>
+				<li><a  href="/NewsPageMVC/dttt/dtttlistkd">Đề tài không được duyệt</a></li>
+				<li><a  href="/NewsPageMVC/ttcn/ttcnlistkd">Đăng kí không được duyệt</a></li>
+	    		<li><a  href="/NewsPageMVC/hocki/hockilist">Đề tài từ các kì trước</a></li>
+	      	</ul>  
+	    </li>
+	    <li >
+			<a  href="#">KLTN</a>
+	    	<ul class="sub">
+	        	<li><a  href="#">Đề tài KLTN</a></li>
+				<li><a  href="#">Đề tài chưa duyệt</a></li>
+				<li><a  href="#">Đăng kí KLTN</a></li>	
+				<li><a  href="#">Đăng kí chờ duyệt</a></li>
 	      	</ul>  
 	    </li>
 	    <%if(role!=null && (role.equals("gvcn") || role.equals("tldt")))  { %>

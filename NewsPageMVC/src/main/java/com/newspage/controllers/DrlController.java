@@ -26,6 +26,13 @@ public class DrlController {
         return "drllist";    
     }
     
+    @RequestMapping(value={"drl/drllist/{lop}"})    
+    public String drllist(@PathVariable String lop, Model m){    
+        List<Drl> dlist = drlDao.getDrlbyLop(lop);    
+        m.addAttribute("dlist",dlist);  
+        return "drllist";    
+    }
+    
     @RequestMapping(value="drl/drledit/{msv}")    
     public String edit(@PathVariable int msv, Model m){    
         Drl drl=drlDao.getDrlByMsv(msv);    

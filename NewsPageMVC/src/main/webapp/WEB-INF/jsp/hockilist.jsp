@@ -35,9 +35,11 @@
 	   <table class="table table-striped border">
 		  <thead>
 		    <tr>
-		      <th scope="col">STT</th>
+		      <th class="col-2" scope="col">STT</th>
 		      <th scope="col">Học kì</th>
-		      <th scope="col">Chức năng</th>
+		      <th class="col-2" scope="col">TTCN</th>
+		      <th class="col-2" scope="col">KLTN</th>
+		      <th class="col-2" scope="col">Chức năng</th>
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -45,10 +47,9 @@
 		    <tr>
 		      <th scope="row">${hocki.id}</th>
 		      <td class="tdot">${hocki.tenhk}</td>
-			   <td>
-			   <a class="btn btn-sm btn-outline-primary" href="/NewsPageMVC/ttcn/ttcnlist/${hocki.id}">TTCN</a>
-			   <a class="btn btn-sm btn-outline-danger" href="/NewsPageMVC/kltn/kltnlist/${hocki.id}">KLTN</a>
-			   </td> 
+			   <td><a class="btn btn-sm btn-outline-success" href="/NewsPageMVC/ttcn/ttcnlist/${hocki.id}">Xem</a></td>
+			   <td><a class="btn btn-sm btn-outline-primary" href="/NewsPageMVC/kltn/kltnlist/${hocki.id}">Xem</a></td>
+			   <td><a class="btn btn-sm btn-outline-danger" href="/NewsPageMVC/kltn/kltndelete/${kltn.mkl}">Xóa</a></td> 
 		    </tr>
 		  </c:forEach>
 		  </tbody>

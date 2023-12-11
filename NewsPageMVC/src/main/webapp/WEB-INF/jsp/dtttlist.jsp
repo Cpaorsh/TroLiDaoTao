@@ -28,7 +28,7 @@
    
    <div class="bg-light d-flex justify-content-between align-items-center">
    <h4 class="p-3">Thực tập chuyên ngành</h4>
-   <a class="btn btn-primary" href="detaittadd">Thêm đề tài mới</a>
+   <a class="btn btn-primary" href="dtttadd">Thêm đề tài mới</a>
 	
    </div>
    <br>
@@ -44,15 +44,15 @@
 		    </tr>
 		  </thead>
 		  <tbody>
-		  <c:forEach var="detaitt" items="${list}" varStatus="count"> 
+		  <c:forEach var="dttt" items="${list}" varStatus="count"> 
 		    <tr>
 		      <th scope="row">${count.count}</th>
-		      <td class="tdot">${detaitt.tendt}</td>
-		      <td>${detaitt.giangvien.hoten}</td>
-		      <td>${detaitt.giangvien.bomon}</td>
+		      <td class="tdot">${dttt.tendt}</td>
+		      <td>${dttt.giangvien.hoten}</td>
+		      <td>${dttt.giangvien.bomon}</td>
 			   <td>
-			   <a class="btn btn-sm btn-outline-primary" href="detaittedit/${detaitt.mdt}">Sửa</a>
-			   <a class="btn btn-sm btn-outline-danger" href="detaittdelete/${detaitt.mdt}">Xóa</a>
+			   <a class="btn btn-sm btn-outline-primary" href="dtttedit/${dttt.mdt}">Sửa</a>
+			   <a class="btn btn-sm btn-outline-danger" href="dtttdelete/${dttt.mdt}">Xóa</a>
 			   </td> 
 		    </tr>
 		    </c:forEach>

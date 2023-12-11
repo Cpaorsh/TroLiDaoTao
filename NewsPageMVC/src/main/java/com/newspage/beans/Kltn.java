@@ -10,7 +10,7 @@ public class Kltn {
 	private String msv;
 	private String cstt;
 	private int idhk;
-	private Byte duyet;
+	private String duyet;
 	
 	private Sinhvien sinhvien;
 	private Giangvien giangvien;
@@ -58,10 +58,10 @@ public class Kltn {
 	    this.cstt = cstt;    
 	}
 	
-	public Byte getDuyet() {    
+	public String getDuyet() {    
 	    return duyet;    
 	}    
-	public void setDuyet(Byte duyet) {    
+	public void setDuyet(String duyet) {    
 	    this.duyet = duyet;    
 	}
 	

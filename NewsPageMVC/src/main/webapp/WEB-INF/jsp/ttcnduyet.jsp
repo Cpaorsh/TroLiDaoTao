@@ -20,9 +20,6 @@
 </head>
 
 <body>
-<%
-	String max = (String)session.getAttribute("max"); 
-%>
     <jsp:include page="_header.jsp" />
     <div class="container">
 	<jsp:include page="_menu.jsp" />
@@ -30,31 +27,27 @@
 	<br><br>
 	
     <div class="col-md-8 mx-auto border">
-	    <div class="bg-light p-3 mb-3"><h4>Chỉnh sửa, bổ sung đơn đăng kí</h4></div>
+	    <div class="bg-light p-3 mb-3"><h4>Xét duyệt đơn đăng kí</h4></div>
 	    
-		    <form:form method="post" action="/NewsPageMVC/ttcn/editsave" class="p-3">
+		    <form:form method="post" action="/NewsPageMVC/ttcn/duyetsave" class="p-3">
 				
 				<div class="mb-3">
 				  <label for="msv" class="form-label">MSV</label>
 				  <form:input readonly="true" class="form-control"  path="msv" />
 				</div>
-
-			    <div class="mb-3">
-				  <label for="mdt" class="form-label">Đề tài</label>
-				  <form:select class="form-control"  path="mdt">
-				  	<c:forEach items="${dt}" var="dt">
-						<form:option value="${dt.mdt}">${dt.tendt}</form:option> 
-					</c:forEach>
-				  </form:select>
+				<div class="mb-3">
+				  <label for="duyet" class="form-label">Duyệt</label>
+				  <form:input type="radio" class="form-control" name="gen" value="0" checked path="duyet" />Không duyệt
+				  <form:input type="radio" class="form-control" name="gen" value="1" checked path="duyet" />Duyệt
 				</div>	
 				<div class="mb-3">
-				  <label for="cstt" class="form-label">Cơ sở thực tập</label>
-				  <form:textarea class="form-control"  path="cstt" />
+				  <label for="lidotc" class="form-label">Lí do từ chối (nếu có)</label>
+				  <form:textarea class="form-control"  path="lidotc" />
 				</div>				
 				<button type="submit" class="btn btn-primary">Cập nhật</button>
 				
 			</form:form>
-			 <a class="btn btn-primary" href="ttcndelete/<%=max%>">Hủy đăng kí </a>
+			
 		</div>
 	</div>
 	
