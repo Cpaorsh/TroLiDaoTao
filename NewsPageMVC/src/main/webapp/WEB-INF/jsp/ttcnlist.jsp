@@ -10,17 +10,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thực tập chuyên ngành</title>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 
     <link type="text/css" href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 
+<script>
+function myFunction() {
+    var a = confirm("Xác nhận đăng kí thực hiện TTCN?");
+    console.log(a)
+}
+
+$(function() {
+	  $('#abc').click(function() {
+	    var url = 'data:application/vnd.ms-excel,' + encodeURIComponent($('#tableWrap').html())
+	    location.href = url
+	    return false
+	  })
+	});
+
+
+
+
+</script>
 </head>
 <body>
 <%
 	String max = (String)session.getAttribute("max"); 
 	String role = (String)session.getAttribute("role");
-	String duyet = (String)session.getAttribute("duyet");
+	String duyettt = (String)session.getAttribute("duyettt");
 %>
 	<jsp:include page="_header.jsp" />
 	<div class="container">
@@ -31,15 +50,21 @@
    <div class="col-md-12 mx-auto">
    
    <div class="bg-light d-flex justify-content-between align-items-center">
-   <h4 class="p-3">Danh sách sinh viên đã đăng kí Thực tập chuyên ngành</h4>
-   <% if (role!=null && ( role.equals("sv") || role.equals("loptruong")) && duyet!=null && duyet.equals("1")) { %>
-   <a class="btn btn-primary" href="ttcnedit/<%=max%>">Đơn đăng kí </a>
-   <% }else if(role!=null && role.equals("sv") && duyet==null){ %>
-   <a class="btn btn-primary" href="ttcnadd/<%=max%>">Đăng kí </a>
-   <% } %>
+       <h4 class="p-3">Danh sách sinh viên đã đăng kí Thực tập chuyên ngành</h4>
+	   
+	   <% if (role!=null && ( role.equals("sv") || role.equals("loptruong"))) {
+	   		if (duyettt!=null && duyettt.equals("1")) { %>
+	   			<a class="btn btn-primary" href="ttcnedit/<%=max%>">Đơn đăng kí </a>
+	   		<% }else if(duyettt==null){ %>
+	   			<a onclick="myFunction()" class="btn btn-primary" href="ttcnadd/<%=max%>">Đăng kí </a>
+	   		<% }
+	   } %>
    </div>
+   <button class="btn btn-primary float-end""  id="abc">Xuất ra Excel</button>
+   
    <br>
    <br>
+   <div id="tableWrap">
 	   <table class="table table-striped border">
 		  <thead>
 		    <tr>
@@ -66,14 +91,15 @@
 		      <td>${ttcn.cstt}</td>
 		      <td>${ttcn.dttt.giangvien.bomon}</td>
 			  <td>
-			   <% if( role!=null && role.equals("truongkhoa"))  { %>
-			   <a class="btn btn-sm btn-outline-danger" href="dtttduyet/${dttt.mdt}">Xét duyệt</a>
+			   <% if(role!=null && role.equals("tldt"))  { %>
+			   <a class="btn btn-sm btn-outline-primary" href="ttcnduyet/${ttcn.msv}">Xét duyệt</a>
 			   <% } %>
 			  </td> 
 		    </tr>
 		    </c:forEach>
 		  </tbody>
 		</table>
+		</div>
 		</div>
 	</div>
 	

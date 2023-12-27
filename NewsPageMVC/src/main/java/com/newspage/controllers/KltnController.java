@@ -10,14 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.newspage.beans.Giangvien;
 import com.newspage.beans.Hocki;
+import com.newspage.beans.Dtkl;
 import com.newspage.beans.Kltn;
-import com.newspage.beans.Sinhvien;
-import com.newspage.dao.GiangvienDao;
 import com.newspage.dao.HockiDao;
 import com.newspage.dao.KltnDao;
-import com.newspage.dao.SinhvienDao;
+import com.newspage.dao.DtklDao;
 
 @Controller
 public class KltnController {
@@ -28,57 +26,81 @@ public class KltnController {
 	@Autowired
 	HockiDao hockiDao;
 	@Autowired
-    GiangvienDao giangvienDao;
-	@Autowired
-    SinhvienDao sinhvienDao;
+	DtklDao dtklDao;
 	
-    
 	
-    @RequestMapping(value="/kltn/kltnlist")    
-    public String kltnlistLast(Model m){    
+    @RequestMapping("/kltn/kltnlist")    
+    public String kltnlist(Model m){ 
     	Hocki hocki = hockiDao.getLastHk();
     	int id =  hocki.getId();
         List<Kltn> list = kltnDao.getKltns(id);    
         m.addAttribute("list",list);  
         return "kltnlist";    
     }
+    @RequestMapping("/kltn/kltnlistcd")    
+    public String kltnunlist(Model m){    
+        List<Kltn> list = kltnDao.getKltnCd();    
+        m.addAttribute("list",list);  
+        return "kltnunlist";    
+    }
+    @RequestMapping("/kltn/kltnlistkd")    
+    public String kltnun(Model m){    
+        List<Kltn> list = kltnDao.getKltnKd();    
+        m.addAttribute("list",list);  
+        return "kltnunlist";    
+    }
     
-    
-    @RequestMapping(value="/kltn/kltnlist/{id}")    
-    public String kltnlist(@PathVariable int id,Model m){    
+    @RequestMapping("/kltn/kltnlist/{id}")    
+    public String kltnlist(@PathVariable int id, Model m){    
         List<Kltn> list = kltnDao.getKltns(id);    
         m.addAttribute("list",list);  
         return "kltnlist";    
     }
     
-    @RequestMapping("kltn/kltnadd")    
-    public String addkltn(Model m){   
-    	List<Giangvien> gv = giangvienDao.getGiangviens();    
-        m.addAttribute("gv",gv);
-    	List<Sinhvien> sv = sinhvienDao.getSinhviens();    
-        m.addAttribute("sv",sv);
-        List<Hocki> hk = hockiDao.getHks();    
-        m.addAttribute("hk",hk);
-        m.addAttribute("command", new Kltn());  
-        return "kltnadd";   
-    }        
-    @RequestMapping(value="kltn/addsave",method = RequestMethod.POST)    
-    public String addsave(@ModelAttribute("kltn") Kltn kltn){    
-    	kltnDao.saveKltn(kltn);
-    		return "redirect:/kltn/kltnlist";   
-    }  
+
+    
+
+    
+    
+    @RequestMapping("kltn/kltnadd/{msv}")    
+    public String addkltn(@PathVariable String msv, Model m, Kltn kltn){    
+    	//Kltn kltn= null;
+    	//Kltn kltn=kltnDao.getKltnById(msv);
+    	//if (kltn == null) {
+    	Hocki hocki = hockiDao.getLastHk();
+    	int id =  hocki.getId();
+    	kltn.setIdhk(id);
+    	kltn.setMsv(msv);
+    	kltnDao.addKltn(kltn);
+    	//}
+//    	else {
+//    		return "Response!";
+//    	}
+    	return "redirect:/kltn/kltnlistcd";  
+    }   
+    
+    
+    @RequestMapping(value="kltn/kltnduyet/{id}")    
+    public String duyetkltn(@PathVariable String id, Model m){    
+        Kltn kltn=kltnDao.getKltnById(id);    
+        m.addAttribute("command",kltn);  
+        return "kltnduyet";    
+    }    
+    @RequestMapping(value="kltn/duyetsave",method = RequestMethod.POST)    
+    public String duyetsave(@ModelAttribute("kltn") Kltn kltn){    
+    	kltnDao.duyetKltn(kltn);
+    		return "redirect:/kltn/kltnlist";
+    } 
     
 
 
     @RequestMapping(value="kltn/kltnedit/{id}")    
-    public String editkltn(@PathVariable int id, Model m){    
-        Kltn kltn=kltnDao.getKltnById(id);
-        List<Giangvien> gv = giangvienDao.getGiangviens();    
-        m.addAttribute("gv",gv);
-    	List<Sinhvien> sv = sinhvienDao.getSinhviens();    
-        m.addAttribute("sv",sv);
-        List<Hocki> hk = hockiDao.getHks();    
-        m.addAttribute("hk",hk);
+    public String editkltn(@PathVariable String id, Model m){    
+    	Hocki hocki = hockiDao.getLastHk();
+    	int idhk =  hocki.getId();
+    	List<Dtkl> dt = dtklDao.getDtcs(idhk);    
+        m.addAttribute("dt",dt);
+    	Kltn kltn=kltnDao.getKltnById(id);    
         m.addAttribute("command",kltn);  
         return "kltnedit";    
     }    
@@ -89,17 +111,15 @@ public class KltnController {
     }    
     
     
-    @RequestMapping(value="kltn/kltndelete/{id}",method = RequestMethod.GET)    
-    public String delete(@PathVariable int id){    
-    	kltnDao.deleteKltn(id);    
-        return "redirect:/kltn/kltnlist";    
-    }
     
-    @RequestMapping(value="kltn/kltnrege/{id}",method = RequestMethod.GET)    
-    public String register(@PathVariable int mkl){    
-    	Model session = null;
-		int msv = (int)session.getAttribute("msv");
-    	kltnDao.regeKltn(msv, mkl);    
+    @RequestMapping(value="kltn/kltndelete/{id}",method = RequestMethod.GET)    
+    public String delete(@PathVariable String id){
+    	//Kltn kltn=kltnDao.getKltnById(id);
+//    	if (kltn != null) {
+    		kltnDao.deleteKltn(id);
+//    	} else {
+//    		
+//    	}
         return "redirect:/kltn/kltnlist";    
     }
 }

@@ -17,7 +17,11 @@
 
 </head>
 <body>
-
+<%
+	String max = (String)session.getAttribute("max"); 
+	String role = (String)session.getAttribute("role");
+	String duyet = (String)session.getAttribute("duyet");
+%>
 	<jsp:include page="_header.jsp" />
 	<div class="container">
 	<jsp:include page="_menu.jsp" />
@@ -27,8 +31,13 @@
    <div class="col-md-12 mx-auto">
    
    <div class="bg-light d-flex justify-content-between align-items-center">
-   <h4 class="p-3">Thực tập chuyên ngành</h4>
-   <a class="btn btn-primary" href="dtttadd">Thêm đề tài mới</a>
+   <h4 class="p-3">Danh sách đề tài Thực tập chuyên ngành</h4>
+   <% if( role!=null && role.equals("gv"))  { %>
+   	<a class="btn btn-primary" href="dtttgvlist/<%=max%>">Đề tài của bạn</a>
+   <% } %>
+   <% if (role!=null && ( role.equals("sv") || role.equals("loptruong")) && duyet!=null && duyet.equals("1")) { %>
+   <a class="btn btn-primary" href="/NewsPageMVC/ttcn/ttcnedit/<%=max%>">Đơn đăng kí </a>
+   <% } %>
 	
    </div>
    <br>
@@ -40,7 +49,6 @@
 		      <th scope="col">Tên đề tài</th>
 		      <th scope="col">Giảng viên hướng dẫn</th>
 		      <th scope="col">Bộ môn</th>
-		      <th scope="col">Chức năng</th>
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -50,10 +58,6 @@
 		      <td class="tdot">${dttt.tendt}</td>
 		      <td>${dttt.giangvien.hoten}</td>
 		      <td>${dttt.giangvien.bomon}</td>
-			   <td>
-			   <a class="btn btn-sm btn-outline-primary" href="dtttedit/${dttt.mdt}">Sửa</a>
-			   <a class="btn btn-sm btn-outline-danger" href="dtttdelete/${dttt.mdt}">Xóa</a>
-			   </td> 
 		    </tr>
 		    </c:forEach>
 		  </tbody>

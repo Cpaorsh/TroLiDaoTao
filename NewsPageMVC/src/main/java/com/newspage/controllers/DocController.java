@@ -25,6 +25,13 @@ public class DocController {
 	
 	@Autowired
     DocDao dao;
+	
+	@RequestMapping(value={"doc/doclist"})    
+    public String docmana(Model m){    
+        List<Doc> list = dao.getDocs();    
+        m.addAttribute("list",list);  
+        return "doclist";    
+    }
 
     @RequestMapping("doc/docadd")    
     public String docadd(Model m){    
@@ -36,7 +43,7 @@ public class DocController {
     	if (doc.getFiled().isEmpty()) {
     		dao.save(doc);
     		//return new ModelAndView("redirect:/doc/docmana");
-    		return "redirect:/doc/docmana"; 
+    		return "redirect:/doc/doclist"; 
     	}
 		byte[] bytes = doc.getFiled().getBytes();
 		String bytess = dao.bytesToHex(bytes);
@@ -44,7 +51,7 @@ public class DocController {
 		doc.setNamefi(doc.getFiled().getOriginalFilename());
 		dao.save(doc);   
     	//return new ModelAndView("/docmana");
-    	return "redirect:/doc/docmana";   
+    	return "redirect:/doc/doclist";   
     }  
     
 
@@ -59,14 +66,14 @@ public class DocController {
     public String editsave(@ModelAttribute("doc") Doc doc){    
     	if (doc.getFiled().isEmpty()) {
     		dao.update(doc);
-    		return "redirect:/doc/docmana";
+    		return "redirect:/doc/doclist";
     	}
 		byte[] bytes = doc.getFiled().getBytes();
 		String bytess = dao.bytesToHex(bytes);
 		doc.setBytefi(bytess);
 		doc.setNamefi(doc.getFiled().getOriginalFilename());
 		dao.update(doc);    	    
-		return "redirect:/doc/docmana";    
+		return "redirect:/doc/doclist";    
     }    
     
     
@@ -74,33 +81,22 @@ public class DocController {
     @RequestMapping(value="doc/docdelete/{id}",method = RequestMethod.GET)    
     public String delete(@PathVariable int id){    
         dao.delete(id);    
-        return "redirect:/doc/docmana";    
+        return "redirect:/doc/doclist";    
     }
     
     
     
     
-    @RequestMapping(value={"doc/docmana", "doc/docmana/search"})    
-    public String docmana(Model m){    
-        List<Doc> list = dao.getDocs();    
-        m.addAttribute("list",list);  
-        return "docmana";    
-    }
-    @RequestMapping(value="doc/docmana/search/{se}")    
-    public String docmana(@PathVariable String se,Model m){    
-        List<Doc> list = dao.findDocs(se);    
-        m.addAttribute("list",list);  
-        return "docmana";    
-    }
+
     
     
-    @RequestMapping(value="doc/docdetail/{id}",method = RequestMethod.GET)    
-    public String docdetail(@PathVariable int id, Model m){    
-    	m.addAttribute("doc", dao.getDocById(id));
-        return "docdetail";    
-    }
+//    @RequestMapping(value="doc/docdetail/{id}",method = RequestMethod.GET)    
+//    public String docdetail(@PathVariable int id, Model m){    
+//    	m.addAttribute("doc", dao.getDocById(id));
+//        return "docdetail";    
+//    }
     
-   @RequestMapping(value = "doc/docdetail/{id}/down", method = RequestMethod.GET)
+   @RequestMapping(value = "doc/down/{id}", method = RequestMethod.GET)
      public ResponseEntity<byte[]> getDownloadData(@PathVariable int id) throws Exception {
 
     	Doc doc = dao.getDocById(id);

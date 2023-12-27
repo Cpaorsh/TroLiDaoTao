@@ -28,13 +28,17 @@
    
    <div class="bg-light d-flex justify-content-between align-items-center">
    <h4 class="p-3">Quản lý điểm rèn luyện</h4>
+   	<div class="search col-4 float-end">
+		<input class="btn-sm " id="txt" name="order" type="text" placeholder="Nhập tên SV cần tìm">          
+		<input class="btn-sm btn-outline-secondary" id='btn' type="image" src="/NewsPageMVC/resources/img/isearch.png" onclick="location.href='/NewsPageMVC/drl/search/'+document.getElementById('txt').value">
+	</div>
    </div>
    <br>
 	   <table class="table table-striped border">
 		  <thead>
 		    <tr>
 		      <th scope="col">MSV</th>
-		      <th scope="col">Tên</th>
+		      <th scope="col">Họ Tên</th>
 		      <th scope="col">ĐRL tự đánh giá</th>
 		      <th scope="col">ĐRL lớp trưởng đánh giá</th>
 		      <th scope="col">ĐRL giáo viên đánh giá</th>
@@ -42,7 +46,7 @@
 		    </tr>
 		  </thead>
 		  <tbody>
-		  <c:forEach var="drl" items="${dlist}"> 
+		  <c:forEach var="drl" items="${list}"> 
 		    <tr>
 		      <th scope="row">${drl.msv}</th>
 		      <td>${drl.sinhvien.hoten}</td>
@@ -59,6 +63,12 @@
 		</div>
 	</div>
 	
+	<div class="style="display: inline;">
+		<c:forEach var="i" begin="1" end="${numberpage}">
+	           <a href="${i}">${i}</a>
+	    </c:forEach>
+	</div> 
+	    
 	<jsp:include page="_footer.jsp" />
 </body>
 </html>

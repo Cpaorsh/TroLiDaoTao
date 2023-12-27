@@ -23,28 +23,50 @@ public class DtttDao {
 	    return template.update(sql);    
 	}    
 	public int updateDt(Dttt s){    
-	    String sql="update dttt set tendt='"+s.getTendt()+"', mgv='"+s.getMgv()+"', idhk='"+s.getIdhk()+"' where mdt="+s.getMdt()+"";    
+	    String sql="update dttt set tendt='"+s.getTendt()+"', idhk='"+s.getIdhk()+"' where mdt="+s.getMdt()+"";    
 	    return template.update(sql);    
 	}    
 	public int deleteDt(String mdt){    
 	    String sql="delete from dttt where mdt="+mdt+"";    
 	    return template.update(sql);    
-	}    
+	}   
+	
+
+	
 	public Dttt getDtById(String mdt){    
 	    String sql="select * from dttt where mdt=?";    
 	    return template.queryForObject(sql, new Object[]{mdt},new BeanPropertyRowMapper<Dttt>(Dttt.class));    
 	}
 	
 	public List<Dttt> getDts(int id){    
-	    return template.query("select * from dttt INNER JOIN giangvien ON dttt.mgv = giangvien.mgv where idhk="+id+"",new RowMapper<Dttt>(){    
+	    return template.query("select * from dttt LEFT JOIN giangvien ON dttt.mgv = giangvien.mgv where idhk="+id+"",new RowMapper<Dttt>(){    
 	        public Dttt mapRow(ResultSet rs, int row) throws SQLException {    
 	        	Dttt d=new Dttt();    
 	            d.setMdt(rs.getInt(1));    
 	            d.setTendt(rs.getString(2));    
-	            d.setMgv(rs.getString(3));       
-	            d.setDuyet(rs.getString(4));
-	            d.setLidotc(rs.getString(5));
-	            d.setIdhk(rs.getInt(6));
+	            d.setMgv(rs.getString(3));    
+	            d.setIdhk(rs.getInt(4));
+	            
+	            Giangvien g= new Giangvien();
+	            g.setHoten(rs.getString("hoten"));
+	            g.setBomon(rs.getString("bomon"));
+	            d.setGiangvien(g);
+	            
+	            return d;    
+	        }    
+	    });    
+	}
+	
+
+	
+	public List<Dttt> getDtgvs(String mgv){    
+	    return template.query("select * from dttt LEFT JOIN giangvien ON dttt.mgv = giangvien.mgv where dttt.mgv='"+mgv+"'",new RowMapper<Dttt>(){    
+	        public Dttt mapRow(ResultSet rs, int row) throws SQLException {    
+	        	Dttt d=new Dttt();    
+	            d.setMdt(rs.getInt(1));    
+	            d.setTendt(rs.getString(2));    
+	            d.setMgv(rs.getString(3));    
+	            d.setIdhk(rs.getInt(4));
 	            
 	            Giangvien g= new Giangvien();
 	            g.setHoten(rs.getString("hoten"));

@@ -19,19 +19,26 @@ public class DrlController {
 	@Autowired
     DrlDao drlDao;
 	
-    @RequestMapping(value={"drl/drllist"})    
+    @RequestMapping(value={"drl/drllist", "drl/search"})    
     public String drllist(Model m){    
-        List<Drl> dlist = drlDao.getDrls();    
-        m.addAttribute("dlist",dlist);  
+        List<Drl> list = drlDao.getDrls();    
+        m.addAttribute("list",list);  
+        return "drllist";    
+    }   
+    @RequestMapping(value={"drl/drllist/{lop}"})    
+    public String drllist(@PathVariable String lop, Model m){    
+        List<Drl> list = drlDao.getDrlbyLop(lop);    
+        m.addAttribute("list",list);  
+        return "drllist";    
+    }
+    @RequestMapping(value="drl/search/{se}")    
+    public String drlmana(@PathVariable String se,Model m){    
+        List<Drl> list = drlDao.findDrls(se);    
+        m.addAttribute("list",list);  
         return "drllist";    
     }
     
-    @RequestMapping(value={"drl/drllist/{lop}"})    
-    public String drllist(@PathVariable String lop, Model m){    
-        List<Drl> dlist = drlDao.getDrlbyLop(lop);    
-        m.addAttribute("dlist",dlist);  
-        return "drllist";    
-    }
+    
     
     @RequestMapping(value="drl/drledit/{msv}")    
     public String edit(@PathVariable int msv, Model m){    
@@ -39,6 +46,7 @@ public class DrlController {
         m.addAttribute("command",drl);  
         return "drledit";    
     }    
+    
     @RequestMapping(value="drl/savesv",method = RequestMethod.POST)    
     public String saveDrlSv(@ModelAttribute("drl") Drl drl){    
     	if(drl.getGvtongdiem() == 0) {

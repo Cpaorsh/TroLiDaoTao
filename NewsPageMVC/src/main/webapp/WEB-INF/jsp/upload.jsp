@@ -35,7 +35,7 @@
 	</form>
   
   	<br>
-	<h2>Tình trạng upload: ${message}</h2>
+	<h2>Tình trạng: ${message}</h2>
 
 	</div>
 	<jsp:include page="_footer.jsp" />

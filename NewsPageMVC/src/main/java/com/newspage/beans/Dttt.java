@@ -4,9 +4,7 @@ public class Dttt {
 	private int mdt;
 	private String tendt;
 	private String mgv;
-	private String lidotc;
 	private int idhk;
-	private String duyet;
 	private Giangvien giangvien;
 	
 	public Giangvien getGiangvien() {
@@ -36,25 +34,12 @@ public class Dttt {
 	public void setMgv(String mgv) {    
 	    this.mgv = mgv;    
 	}
-	
-	public String getLidotc() {    
-	    return lidotc;    
-	}    
-	public void setLidotc(String lidotc) {    
-	    this.lidotc = lidotc;    
-	}
-	
+
 	public int getIdhk() {    
 	    return idhk;    
 	}    
 	public void setIdhk(int idhk) {    
 	    this.idhk = idhk;    
 	}
-	
-	public String getDuyet() {    
-	    return duyet;    
-	}    
-	public void setDuyet(String duyet) {    
-	    this.duyet = duyet;    
-	}
+
 }

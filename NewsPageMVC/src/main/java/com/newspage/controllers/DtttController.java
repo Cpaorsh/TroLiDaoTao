@@ -11,11 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.newspage.beans.Dttt;
-import com.newspage.beans.Giangvien;
 import com.newspage.beans.Hocki;
-import com.newspage.beans.Sinhvien;
 import com.newspage.dao.DtttDao;
-import com.newspage.dao.GiangvienDao;
 import com.newspage.dao.HockiDao;
 
 @Controller
@@ -25,8 +22,6 @@ public class DtttController {
     DtttDao dtttDao;
 	@Autowired
 	HockiDao hockiDao;
-	@Autowired
-    GiangvienDao giangvienDao;
 	
     @RequestMapping(value="dttt/dtttlist/{id}", method = RequestMethod.GET)    
     public String dtttlist(@PathVariable int id, Model m){    
@@ -44,10 +39,15 @@ public class DtttController {
         return "dtttlist";    
     }
     
+    @RequestMapping(value="dttt/dtttgvlist/{mgv}", method = RequestMethod.GET)    
+    public String dtttgvlist(@PathVariable String mgv, Model m){    
+        List<Dttt> list = dtttDao.getDtgvs(mgv);    
+        m.addAttribute("list",list);  
+        return "dtttgvlist";    
+    }
+    
     @RequestMapping("dttt/dtttadd")    
-    public String adddttt(Model m){  
-    	List<Giangvien> gv = giangvienDao.getGiangviens();    
-        m.addAttribute("gv",gv);
+    public String adddttt(Model m){ 
         List<Hocki> hk = hockiDao.getHks();    
         m.addAttribute("hk",hk);
         m.addAttribute("command", new Dttt());  
@@ -56,16 +56,13 @@ public class DtttController {
     @RequestMapping(value="dttt/addsave",method = RequestMethod.POST)    
     public String addsave(@ModelAttribute("dttt") Dttt dttt){    
     	dtttDao.saveDt(dttt);
-    		return "redirect:/dttt/dtttlist";   
+    	return "redirect:/dttt/dtttlist";   
     }  
     
-
 
     @RequestMapping(value="dttt/dtttedit/{id}")    
     public String editdttt(@PathVariable String id, Model m){    
         Dttt dttt=dtttDao.getDtById(id); 
-        List<Giangvien> gv = giangvienDao.getGiangviens();    
-        m.addAttribute("gv",gv);
         List<Hocki> hk = hockiDao.getHks();    
         m.addAttribute("hk",hk);
         m.addAttribute("command",dttt);  
@@ -74,7 +71,7 @@ public class DtttController {
     @RequestMapping(value="dttt/editsave",method = RequestMethod.POST)    
     public String editsave(@ModelAttribute("dttt") Dttt dttt){    
     	dtttDao.updateDt(dttt);
-    		return "redirect:/dttt/dtttlist";
+    	return "redirect:/dttt/dtttlist";
     }    
     
     
@@ -84,5 +81,6 @@ public class DtttController {
     	dtttDao.deleteDt(id);    
         return "redirect:/dttt/dtttlist";    
     }
+    
 
 }

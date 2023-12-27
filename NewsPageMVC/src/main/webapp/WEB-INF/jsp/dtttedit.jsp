@@ -10,7 +10,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chỉnh sửa đề tài</title>
+    <title>Đề tài TTCN</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
@@ -39,14 +39,6 @@
 				<div class="mb-3">
 				  <label for="tendt" class="form-label">Tên đề tài</label>
 				  <form:input class="form-control"  path="tendt" />
-				</div>
-			    <div class="mb-3">
-				  <label for="mgv" class="form-label">Giảng viên</label>
-				  <form:select class="form-control"  path="mgv">
-				  	<c:forEach items="${gv}" var="gv">
-						<form:option value="${gv.mgv}">${gv.hoten}</form:option> 
-					</c:forEach>
-				  </form:select>
 				</div>
 
 				<div class="mb-3">

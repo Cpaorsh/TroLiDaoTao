@@ -17,13 +17,18 @@
 
 <% 
 String rolea = (String)session.getAttribute("role");
+String max = (String)session.getAttribute("max");
 String blockG = "fail";
 String blockL = "fail";
 String blockS = "fail";
 if(rolea!=null){
 	if(rolea.equals("loptruong"))  {
+		String url = (String)request.getAttribute("javax.servlet.forward.request_uri");
+		url = url.substring(url.lastIndexOf("/") + 1);
 		blockG = "blocli";
-	}else if(rolea.equals("gvcn")){
+		if(max.equals(url)) {}
+		else{blockS = "blocli";}
+	}else if(rolea.equals("gv")){
 		blockS = "blocli";
 		blockL = "blocli";
 	}else {

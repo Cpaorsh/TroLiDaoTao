@@ -1,54 +1,37 @@
 package com.newspage.beans;
 
-
-
 public class Kltn {
 
-	private int mkl;
-	private String detai;
-	private String mgv;
+	private String mdt;
 	private String msv;
 	private String cstt;
-	private int idhk;
 	private String duyet;
+	private String lidotc;
+	private int idhk;
 	
 	private Sinhvien sinhvien;
-	private Giangvien giangvien;
+	private Dtkl dtkl;
 	
-	
-	public int getMkl() {    
-	    return mkl;    
-	}    
-	public void setMkl(int mkl) {    
-	    this.mkl = mkl;    
+	public Sinhvien getSinhvien() {
+		return sinhvien;
+	}
+	public void setSinhvien(Sinhvien sinhvien) {
+		this.sinhvien = sinhvien;
+	}
+
+	public Dtkl getDtkl() {
+		return dtkl;
+	}
+	public void setDtkl(Dtkl dtkl) {
+	    this.dtkl = dtkl;
 	}
 	
-	public int getIdhk() {    
-	    return idhk;    
-	}    
-	public void setIdhk(int idhk) {    
-	    this.idhk = idhk;    
-	}
 	
-	public String getDetai() {    
-	    return detai;    
+	public String getMdt() {    
+	    return mdt;    
 	}    
-	public void setDetai(String detai) {    
-	    this.detai = detai;    
-	}
-	
-	public String getMsv() {    
-	    return msv;    
-	}    
-	public void setMsv(String msv) {    
-	    this.msv = msv;    
-	}
-	
-	public String getMgv() {    
-	    return mgv;    
-	}    
-	public void setMgv(String mgv) {    
-	    this.mgv = mgv;    
+	public void setMdt(String mdt) {    
+	    this.mdt = mdt;    
 	}
 	
 	public String getCstt() {    
@@ -58,6 +41,13 @@ public class Kltn {
 	    this.cstt = cstt;    
 	}
 	
+	public String getMsv() {    
+	    return msv;    
+	}    
+	public void setMsv(String msv) {    
+	    this.msv = msv;    
+	}
+	
 	public String getDuyet() {    
 	    return duyet;    
 	}    
@@ -65,18 +55,18 @@ public class Kltn {
 	    this.duyet = duyet;    
 	}
 	
+	public String getLidotc() {    
+	    return lidotc;    
+	}    
+	public void setLidotc(String lidotc) {    
+	    this.lidotc = lidotc;    
+	}
 	
-	public Sinhvien getSinhvien() {
-		return sinhvien;
+	public int getIdhk() {    
+	    return idhk;    
+	}    
+	public void setIdhk(int idhk) {    
+	    this.idhk = idhk;    
 	}
-	public void setSinhvien(Sinhvien sinhvien) {
-		this.sinhvien = sinhvien;
-	}
-	
-	public Giangvien getGiangvien() {
-		return giangvien;
-	}
-	public void setGiangvien(Giangvien giangvien) {
-	    this.giangvien = giangvien;
-	}
+
 }

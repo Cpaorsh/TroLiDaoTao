@@ -45,7 +45,7 @@ public class FileUploadController {
 
 			uploadService.uploadFileData("D:\\"+path.getFileName());
 
-			model.addAttribute("message", "You successfully uploaded '" + file.getOriginalFilename() + "'");
+			model.addAttribute("message", "Tải lên thành công danh sách sinh viên từ file '" + file.getOriginalFilename() + "'");
 			
 		} catch (IOException e) {
 			model.addAttribute("message", "Failure occured during upload '" + file.getOriginalFilename() + "'");			

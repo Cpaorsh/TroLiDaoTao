@@ -2,11 +2,12 @@ package com.newspage.beans;
 
 public class Ttcn {
 
-	private int mdt;
+	private String mdt;
 	private String msv;
 	private String cstt;
 	private String duyet;
 	private String lidotc;
+	private int idhk;
 	
 	private Sinhvien sinhvien;
 	private Dttt dttt;
@@ -26,10 +27,10 @@ public class Ttcn {
 	}
 	
 	
-	public int getMdt() {    
+	public String getMdt() {    
 	    return mdt;    
 	}    
-	public void setMdt(int mdt) {    
+	public void setMdt(String mdt) {    
 	    this.mdt = mdt;    
 	}
 	
@@ -59,6 +60,13 @@ public class Ttcn {
 	}    
 	public void setLidotc(String lidotc) {    
 	    this.lidotc = lidotc;    
+	}
+	
+	public int getIdhk() {    
+	    return idhk;    
+	}    
+	public void setIdhk(int idhk) {    
+	    this.idhk = idhk;    
 	}
 
 }

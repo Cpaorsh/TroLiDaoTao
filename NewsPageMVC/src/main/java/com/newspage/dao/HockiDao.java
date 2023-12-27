@@ -52,4 +52,22 @@ public class HockiDao {
 	        }    
 	    });    
 	}
+	
+	
+	public int getTotal(){    
+		 String sql = "select count(*) from hocki";
+		 return template.queryForObject(sql, Integer.class);
+	}
+	
+	public List<Hocki> getbyPagination(int hockiid,int totalRecord){    
+	    String sql="select * from hocki order by id desc limit "+(hockiid-1)+","+totalRecord;    
+	    return template.query(sql,new RowMapper<Hocki>(){    
+	        public Hocki mapRow(ResultSet rs, int row) throws SQLException {    
+	            Hocki e=new Hocki();    
+	            e.setId(rs.getInt(1));    
+	            e.setTenhk(rs.getString(2));   
+	            return e;    
+	        }    
+	    });    
+	} 
 }

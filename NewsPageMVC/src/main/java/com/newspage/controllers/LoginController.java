@@ -47,7 +47,8 @@ public class LoginController {
       session.setAttribute("name", user.getHoten());
       session.setAttribute("role", user.getChucvu());
       session.setAttribute("lop", user.getLop());
-      session.setAttribute("duyet", user.getDuyet());
+      session.setAttribute("duyettt", user.getDuyettt());
+      session.setAttribute("duyetkl", user.getDuyetkl());
       
       return "redirect:/";
     } else {

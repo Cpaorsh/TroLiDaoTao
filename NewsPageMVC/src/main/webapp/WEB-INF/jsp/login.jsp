@@ -19,76 +19,27 @@
 <body class="loginpage">
 
 	<div class="login">
-	
 		<div class="login-logo" style="text-align: center;">
 	        <img style="height: 84px;" src="/NewsPageMVC/resources/img/vnua.png" >
 	    </div>
 
 		<form:form id="loginForm" modelAttribute="login" action="loginProcess" method="post">
 			<p>
-				<label for="user_login">Username or Email Address</label>
+				<label for="user_login">Tài khoản</label>
 				<form:input path="username" type="text" name="log" id="user_login" class="input" value="" size="20" autocapitalize="off"/>
-							
-			
 			</p>
 			<div class="user-pass-wrap">
-				<label for="user_pass">Password</label>
+				<label for="user_pass">Mật khẩu</label>
 				<div class="wp-pwd">
 					<form:input path="password" type="password" name="pwd" id="user_pass" class="input password-input" value="" size="20"/>
 				</div>
 			</div>
-			
-			<button type="submit" class="btn btn-primary">Đăng nhập</button>
-			
+			<button type="submit" class="btn btn-primary">Đăng nhập</button>			
 		</form:form>
 		<br>
 		<p id="backtoblog"><a class="text-dark" href="/NewsPageMVC">&larr; Trở lại trang chủ</a></p>
 		<p style="font-style:italic; font-size:1.3vw; color:red;">${message}</p>
 	</div>
+	
 </body>
 </html>
-<%-- 
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Login</title>
-</head>
-<body>
-
-	<form:form id="loginForm" modelAttribute="login" action="loginProcess"
-		method="post">
-		<table align="center">
-			<tr>
-				<td><form:label path="username">Username: </form:label></td>
-				<td><form:input path="username" name="username" id="username" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="password">Password:</form:label></td>
-				<td><form:password path="password" name="password"
-						id="password" /></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td align="left"><form:button id="login" name="login">Login</form:button></td>
-			</tr>
-
-			<tr></tr>
-			<tr>
-				<td></td>
-				<td><a href="home.jsp">Home</a></td>
-			</tr>
-		</table>
-	</form:form>
-	<table align="center">
-		<tr>
-			<td style="font-style: italic; color: red;">${message}</td>
-		</tr>
-	</table>
-
-</body>
-</html>
- --%>

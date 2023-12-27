@@ -22,11 +22,11 @@ public class GiangvienDao {
 	    return template.update(sql);    
 	}    
 	public int updateGvien(Giangvien s){    
-	    String sql="update giangvien set hoten='"+s.getHoten()+"', ngaysinh='"+s.getNgaysinh()+"', lop='"+s.getLop()+"' where mgv="+s.getMgv()+"";    
+	    String sql="update giangvien set hoten='"+s.getHoten()+"', ngaysinh='"+s.getNgaysinh()+"', lop='"+s.getLop()+"' where mgv='"+s.getMgv()+"'";    
 	    return template.update(sql);    
 	}    
 	public int deleteGvien(String mgv){    
-	    String sql="delete from giangvien where mgv="+mgv+"";    
+	    String sql="delete from giangvien where mgv='"+mgv+"'";    
 	    return template.update(sql);    
 	}    
 	public Giangvien getGiangvienById(String mgv){    

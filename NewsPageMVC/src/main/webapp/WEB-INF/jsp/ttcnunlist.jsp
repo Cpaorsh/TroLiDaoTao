@@ -32,9 +32,9 @@
    <div class="col-md-12 mx-auto">
    
    <div class="bg-light d-flex justify-content-between align-items-center">
-   <h4 class="p-3">Danh sách SV đăng kí Thực tập chuyên ngành</h4>
+   <h4 class="p-3">Danh sách SV đăng kí Thực tập chuyên ngành chưa được duyệt</h4>
    <% if (role!=null && (role.equals("sv")|| role.equals("loptruong")) && duyet!=null) { %>
-   <a class="btn btn-primary" href="ttcnadd/<%=max%>">Hủy đăng kí </a>
+   <a class="btn btn-primary" href="ttcndelete/<%=max%>">Hủy đăng kí </a>
    <% } %>
    </div>
    <br>

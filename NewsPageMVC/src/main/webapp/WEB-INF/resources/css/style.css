@@ -18,10 +18,11 @@ a {
 }
 header .flex-nowrap {
 	padding-left: 20px;
+	width: 100%;
 }
 
 .blog-header-logo {
-	font-size: 3vw;
+	font-size: 2vw;
 }
 
 .blog-header-logo:hover {
@@ -466,9 +467,7 @@ table {
     overflow: hidden !important;
     text-overflow: ellipsis;
 }
-/*
-àdsgfhgjhjfdgfhgjhdxfcgvqwertyuiopdfghjkl;zxcvbnm
-*/ 
+/*----------------------------------------------menu---------*/ 
 
 .wrap {
 	width: 100%;
@@ -502,7 +501,7 @@ ul {
 
 li {
   float: left;
-  width: 20%;
+  width: 16%;
 }
 
 /* clear'n floats */
@@ -655,4 +654,39 @@ ul.primary li:hover > a{
     color: #ccc;
     background: none;
   }
+} 
+  
+  
+  
+/*  ------------------------------------------slideshow-------------*/
+#slider {
+	overflow: hidden;
 }
+
+@keyframes slider {
+	0% { left: 0; }
+	30% { left: 0; }
+	33% { left: -100%; }
+	63% { left: -100%; }
+	66% { left: -200%; }
+	95% { left: -200%; }
+	100% { left: 0; }
+}
+#slider figure {
+	z-index: -1;
+	width:300%;
+	position: relative;
+	animation: 9s slider infinite;
+}
+
+#slider figure:hover {
+	/*animation-play-state: paused; enable for pause on hover*/
+}
+#slider figure img {
+	width: 33.333333333%;
+	height : 50vw;
+	float: left;
+}
+  
+  
+  

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" 
 	xmlns:context="http://www.springframework.org/schema/context" 
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -11,8 +11,8 @@
     
     <context:annotation-config />
     
-    <!-- <bean id="userService" class="jbr.springmvc.service.UserServiceImpl" /> -->
-    <!-- <bean id="userDao" class="jbr.springmvc.dao.UserDaoImpl" /> -->
+     <bean id="userService" class="jbr.springmvc.service.UserServiceImpl" /> 
+     <bean id="userDao" class="jbr.springmvc.dao.UserDaoImpl" /> 
     
 	<bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">    
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>    
@@ -26,4 +26,4 @@
 	</bean>    
 
 	
-</beans>
+</beans>-->

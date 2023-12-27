@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.newspage.beans.Dttt;
 import com.newspage.beans.Giangvien;
+import com.newspage.beans.Kltn;
 import com.newspage.beans.Sinhvien;
 import com.newspage.beans.Ttcn;
 
@@ -20,12 +21,12 @@ public class TtcnDao {
 	public void setTemplate(JdbcTemplate template) {    
 	    this.template = template;    
 	}    
-	public int addTtcn(String msv){    
-	    String sql="insert into ttcn(msv) values('"+msv+"')";    
+	public int addTtcn(Ttcn t){    
+	    String sql="insert into ttcn(msv, idhk) values('"+t.getMsv()+"',  '"+t.getIdhk()+"')";    
 	    return template.update(sql);    
 	} 
-	public int duyetTtcn(Ttcn s){    
-	    String sql="update ttcn set duyet='"+s.getDuyet()+"', lidotc='"+s.getLidotc()+"' where msv="+s.getMsv()+"";    
+	public int duyetTtcn(Ttcn t){    
+	    String sql="update ttcn set duyet='"+t.getDuyet()+"', lidotc='"+t.getLidotc()+"' where msv="+t.getMsv()+"";    
 	    return template.update(sql);    
 	}
 	public int updateTtcn(Ttcn s){    
@@ -37,17 +38,20 @@ public class TtcnDao {
 	    return template.update(sql);    
 	}    
 	public Ttcn getTtcnById(String msv){    
-	    String sql="select * from ttcn where msv=?";    
-	    return template.queryForObject(sql, new Object[]{msv},new BeanPropertyRowMapper<Ttcn>(Ttcn.class));    
+	    String sql="select * from ttcn where msv='"+msv+"'";    
+	    return template.queryForObject(sql,new BeanPropertyRowMapper<Ttcn>(Ttcn.class)); 
+	    //List<Ttcn> ttcn = template.query(sql, new BeanPropertyRowMapper<Ttcn>(Ttcn.class));
+		//return ttcn.size() > 0 ? ttcn.get(0) : null;
 	}
 	
 	public List<Ttcn> getTtcns(int id){    
-	    return template.query("select * from ttcn INNER JOIN sinhvien ON ttcn.msv = sinhvien.msv INNER JOIN dttt INNER JOIN giangvien ON dttt.mgv = giangvien.mgv ON ttcn.mdt = dttt.mdt where idhk="+id+" and ttcn.duyet=1",new RowMapper<Ttcn>(){    
+	    return template.query("select * from ttcn INNER JOIN sinhvien ON ttcn.msv = sinhvien.msv left JOIN dttt INNER JOIN giangvien ON dttt.mgv = giangvien.mgv ON ttcn.mdt = dttt.mdt where ttcn.idhk="+id+" and ttcn.duyet=1",new RowMapper<Ttcn>(){    
 	    public Ttcn mapRow(ResultSet rs, int row) throws SQLException {    
 	        	Ttcn t=new Ttcn();    
 	        	t.setMsv(rs.getString(1));
-	        	t.setMdt(rs.getInt(2));       
-	            t.setCstt(rs.getString(3)); 
+	        	t.setMdt(rs.getString(2));       
+	            t.setCstt(rs.getString(3));
+	            t.setIdhk(rs.getInt(4));
 
 	            Sinhvien s = new Sinhvien();
 	            s.setHoten(rs.getString("sinhvien.hoten"));
@@ -70,12 +74,13 @@ public class TtcnDao {
 	
 	
 	public List<Ttcn> getTtcnCd(){    
-	    return template.query("select * from ttcn INNER JOIN sinhvien ON ttcn.msv = sinhvien.msv INNER JOIN dttt INNER JOIN giangvien ON dttt.mgv = giangvien.mgv ON ttcn.mdt = dttt.mdt where ttcn.duyet is null",new RowMapper<Ttcn>(){    
+	    return template.query("select * from ttcn INNER JOIN sinhvien ON ttcn.msv = sinhvien.msv left JOIN dttt INNER JOIN giangvien ON dttt.mgv = giangvien.mgv ON ttcn.mdt = dttt.mdt where ttcn.duyet=0",new RowMapper<Ttcn>(){    
 	    public Ttcn mapRow(ResultSet rs, int row) throws SQLException {    
 	        	Ttcn t=new Ttcn();    
 	        	t.setMsv(rs.getString(1));
-	        	t.setMdt(rs.getInt(2));       
-	            t.setCstt(rs.getString(3)); 
+	        	t.setMdt(rs.getString(2));       
+	            t.setCstt(rs.getString(3));
+	            t.setIdhk(rs.getInt(4));
 
 	            Sinhvien s = new Sinhvien();
 	            s.setHoten(rs.getString("sinhvien.hoten"));
@@ -89,13 +94,14 @@ public class TtcnDao {
 	}
 	
 	public List<Ttcn> getTtcnKd(){    
-	    return template.query("select * from ttcn INNER JOIN sinhvien ON ttcn.msv = sinhvien.msv INNER JOIN dttt INNER JOIN giangvien ON dttt.mgv = giangvien.mgv ON ttcn.mdt = dttt.mdt where  ttcn.duyet=0",new RowMapper<Ttcn>(){    
+	    return template.query("select * from ttcn INNER JOIN sinhvien ON ttcn.msv = sinhvien.msv left JOIN dttt INNER JOIN giangvien ON dttt.mgv = giangvien.mgv ON ttcn.mdt = dttt.mdt where  ttcn.duyet=2",new RowMapper<Ttcn>(){    
 	    public Ttcn mapRow(ResultSet rs, int row) throws SQLException {    
 	        	Ttcn t=new Ttcn();    
 	        	t.setMsv(rs.getString(1));
-	        	t.setMdt(rs.getInt(2));       
+	        	t.setMdt(rs.getString(2));       
 	            t.setCstt(rs.getString(3)); 
-	            t.setLidotc(rs.getString(4)); 
+	            t.setIdhk(rs.getInt(4));
+	            t.setLidotc(rs.getString(5)); 
 
 	            Sinhvien s = new Sinhvien();
 	            s.setHoten(rs.getString("sinhvien.hoten"));

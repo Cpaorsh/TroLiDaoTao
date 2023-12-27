@@ -8,10 +8,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public class Doc {
 	private int id;    
-	private String title;    
-	private String author;    
-	private String content; 
-	private String category;
+	private String title; 
 	private Date datec;
 	private String bytefi;
 	private Blob hexfi;
@@ -30,24 +27,7 @@ public class Doc {
 	public void setTitle(String title) {    
 	    this.title = title;    
 	}    
-	public String getAuthor() {    
-	    return author;    
-	}    
-	public void setAuthor(String author) {    
-	    this.author = author;    
-	}    
-	public String getContent() {    
-	    return content;    
-	}    
-	public void setContent(String content) {    
-	    this.content = content;    
-	}    
-	public String getCategory() {    
-	    return category;    
-	}    
-	public void setCategory(String category) {    
-	    this.category = category;    
-	}
+
 	public Date getDatec() {    
 	    return datec;    
 	}    

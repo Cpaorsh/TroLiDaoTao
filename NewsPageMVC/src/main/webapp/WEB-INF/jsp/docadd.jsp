@@ -10,7 +10,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Post</title>
+    <title>Tài liệu</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
@@ -27,32 +27,18 @@
 	<br><br>
 	
     <div class="col-md-8 mx-auto border">
-	    <div class="bg-light p-3 mb-3"><h4>Add New Post</h4></div>
+	    <div class="bg-light p-3 mb-3"><h4>Thêm tài liệu mới</h4></div>
 	    
 		    <form:form method="post" action="addsave" class="p-3" enctype="multipart/form-data">
-
 			    <div class="mb-3">
-				  <label for="title" class="form-label">title</label>
+				  <label for="title" class="form-label">Tên tài liệu</label>
 				  <form:input class="form-control" placeholder="Page Title" path="title" />
 				</div>
-			    <div class="mb-3">
-				  <label for="content" class="form-label">Content</label>
-				  <form:textarea class="form-control" placeholder="Content" path="content" />
-				</div>
 				<div class="mb-3">
-				  <label for="category" class="form-label">Category</label>
-				  <form:select class="form-control" placeholder="Category" path="category">
-				  	<form:option value="Điểm rèn luyện"></form:option>
-    				<form:option value="KLTN & TTCN"></form:option>
-    				<form:option value="Học bổng"></form:option>    				
-				  </form:select>
-				</div>
-				<div class="mb-3">
-				  <label for="filed" class="form-label">upload file</label>
+				  <label for="filed" class="form-label">Upload file</label>
 				  <form:input type="file"  path="filed" />
 				</div>
-				<button type="submit" class="btn btn-primary">Add Post</button>
-				
+				<button type="submit" class="btn btn-primary">Thêm</button>		
 			</form:form>
 			
 		</div>

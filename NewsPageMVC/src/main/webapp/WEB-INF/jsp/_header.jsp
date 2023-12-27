@@ -9,9 +9,9 @@
 		
 		<div class="col-10 text-start d-none d-md-flex">
 			<img class="col-3" src="/NewsPageMVC/resources/img/vnua.png" alt="hahah" style="width:7vw; height:7vw;">
-			<div class="col-4 text-center">
-				<a class="blog-header-logo text-white" href="/NewsPageMVC"><b>TRỢ LÝ ĐÀO TẠO</b></a>
-				<p class="text-success">Học viện Nông nghiệp Việt Nam</p>
+			<div class="col-5 text-center">
+				<a class="blog-header-logo text-white" href="/NewsPageMVC"><b>KHOA CÔNG NGHỆ THÔNG TIN</b></a>
+				<p class="text-success">Trang hỗ trợ đào tạo</p>
 			</div>
 			<img class="col-3" src="/NewsPageMVC/resources/img/fita.png" alt="hahah" style="width:7vw">
 			

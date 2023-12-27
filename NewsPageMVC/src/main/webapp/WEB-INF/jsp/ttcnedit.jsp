@@ -54,7 +54,7 @@
 				<button type="submit" class="btn btn-primary">Cập nhật</button>
 				
 			</form:form>
-			 <a class="btn btn-primary" href="ttcndelete/<%=max%>">Hủy đăng kí </a>
+			 <a class="btn btn-primary" href="/NewsPageMVC/ttcn/ttcndelete/<%=max%>">Hủy đăng kí </a>
 		</div>
 	</div>
 	

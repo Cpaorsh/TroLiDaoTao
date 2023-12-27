@@ -36,9 +36,9 @@
 				  <form:input readonly="true" class="form-control"  path="msv" />
 				</div>
 				<div class="mb-3">
-				  <label for="duyet" class="form-label">Duyệt</label>
-				  <form:input type="radio" class="form-control" name="gen" value="0" checked path="duyet" />Không duyệt
-				  <form:input type="radio" class="form-control" name="gen" value="1" checked path="duyet" />Duyệt
+				  <label for="duyet" class="form-label">Duyệt</label><br>
+				  <form:radiobutton path="duyet" value="2" />Từ chối
+				  <form:radiobutton path="duyet" value="1" />Duyệt
 				</div>	
 				<div class="mb-3">
 				  <label for="lidotc" class="form-label">Lí do từ chối (nếu có)</label>

@@ -63,12 +63,15 @@ public class TtcnController {
     
     
     @RequestMapping("ttcn/ttcnadd/{msv}")    
-    public String addttcn(@PathVariable String msv, Model m){    
-    	Ttcn ttcn=ttcnDao.getTtcnById(msv);
-    	if (ttcn == null) {
-    		ttcnDao.addTtcn(msv);
-    	}
-    	return "ttcnlist";   
+    public String addttcn(@PathVariable String msv, Model m, Ttcn ttcn){    
+
+    	Hocki hocki = hockiDao.getLastHk();
+    	int id =  hocki.getId();
+    	ttcn.setIdhk(id);
+    	ttcn.setMsv(msv);
+    	ttcnDao.addTtcn(ttcn);
+
+    	return "redirect:/ttcn/ttcnlistcd";  
     }   
     
     
@@ -106,12 +109,12 @@ public class TtcnController {
     
     @RequestMapping(value="ttcn/ttcndelete/{id}",method = RequestMethod.GET)    
     public String delete(@PathVariable String id){
-    	Ttcn ttcn=ttcnDao.getTtcnById(id);
-    	if (ttcn != null) {
+    	//Ttcn ttcn=ttcnDao.getTtcnById(id);
+//    	if (ttcn != null) {
     		ttcnDao.deleteTtcn(id);
-    	} else {
-    		
-    	}
+//    	} else {
+//    		
+//    	}
         return "redirect:/ttcn/ttcnlist";    
     }
 }

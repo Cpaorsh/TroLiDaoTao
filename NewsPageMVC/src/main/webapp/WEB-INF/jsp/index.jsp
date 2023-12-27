@@ -7,7 +7,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Trang Hướng Nghiệp</title>
+	<title>Khoa Công Nghệ Thông Tin</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
@@ -24,54 +24,66 @@
 <jsp:include page="_header.jsp" />
 <div class="container">
 <jsp:include page="_menu.jsp" />
-		<div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+
+			<div id="slider">
+				  <figure>
+					    <img src="/NewsPageMVC/resources/img/slide1.jpg">
+					    <img src="/NewsPageMVC/resources/img/slide2.jpg">
+					    <img src="/NewsPageMVC/resources/img/slide3.jpg">
+				  </figure>
+			</div>
+
+
+
+
+<!--  		<div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
 		<div class="col-md-6 px-0">
-			<h1 class="display-4 font-italic">Hướng Nghiệp<span class=""><b></span></h1>
+			<h1 class="display-4 font-italic">Trợ lí đào tạo<span class=""><b></span></h1>
 			<h2 class="text-warning">Học viện Nông nghiệp Việt Nam</h2>
 			<p class="my-3" style="color: rgb(213,213,213);">
-				Find any news you want.
+				slideshow
 			</p>
 		</div>
-		</div>
+		</div> -->
 		<br>
-		<h5>Faculties</h5>
+<!-- 		<h5>Faculties</h5>
 		<hr>
 		<div class="d-flex ">
 			<a class="tag col-2" href="category/Điểm rèn luyện">Điểm rèn luyện</a>
 			<a class="tag col-2" href="category/KLTN & TTCN">KLTN & TTCN</a>
 			<a class="tag col-2" href="category/Học bổng">Học bổng</a>
-			<!-- <a href="#">All genres</a> -->
-		</div>
+			<a href="#">All genres</a>
+		</div> -->
 	
 		<br><br>
-		<h5>Latest News</h5>
-		<hr>
-		<div class="row mb-2 py-5">
- 		<c:forEach var="doc" items="${liss}" begin="1" end="6"> 
-			<div class="col-md-12">
-				<div class="card flex-md-row mb-4 box-shadow">
-					<div class="card-body d-flex flex-column align-items-start">
-						<a class="text-dark" href="doc/docdetail/${doc.id}"><strong class="d-inline-block mb-2 text-success">
-							<h2>${doc.title}</h2>
-						</strong></a>
-						<p class="noidung card-text mb-auto">${doc.content}</p>
-						<p class="ngay mb-auto">${doc.datec}</p>
-					</div>
-				</div>
-			</div>
-		</c:forEach>
-		<a href="list/1">See all</a>
+ 		
+ 		<div class="row">
+		<div class="col-md-8 blog-main">
+			<h4 class="pb-3 mb-4 font-italic border-bottom">Danh sách thực hiện Khóa luận tốt nghiệp</h4>
+			<ol class="list-unstyled mb-0">
+				<c:forEach var="hocki" items="${liss}" begin="0" end="6">
+				<li class="col-12"><a class="text-dark" href="/NewsPageMVC/kltn/kltnlist/${hocki.id}">${hocki.tenhk}</a></li><br>			
+				</c:forEach>
+			</ol>
 		</div>
 		
+		
+		
 	
-<!-- 	<main role="main" class="container">
+	<main role="main" class="container">
 		<div class="row">
 		<div class="col-md-8 blog-main">
-			<h3 class="pb-3 mb-4 font-italic border-bottom">Recommendations</h3>
+		<br><br>
+			<h4 class="pb-3 mb-4 font-italic border-bottom">Danh sách thực hiện Thực tập chuyên ngành</h4>
+			<ol class="list-unstyled mb-0">
+				<c:forEach var="hocki" items="${liss}" >
+				<li class="col-12"><a class="text-dark" href="/NewsPageMVC/kltn/kltnlist/${hocki.id}">${hocki.tenhk}</a></li><br>			
+				</c:forEach>
+			</ol>
 		</div>
 		
 	
-		<aside class="col-md-4 blog-sidebar">
+<!-- 		<aside class="col-md-4 blog-sidebar">
 			<div class="p-3 mb-3 bg-light rounded">
 			<h4 class="font-italic">About</h4>
 			<p class="mb-0"><em>Vietnam National University of Agriculture (VNUA)</em> 
@@ -93,9 +105,9 @@
 				<li><a href="#">Who's Adil</a></li>
 			</ol>
 			</div>
-		</aside>
+		</aside> -->
 		</div>
-	</main> -->
+	</main>
 </div>
 	
 <jsp:include page="_footer.jsp" />

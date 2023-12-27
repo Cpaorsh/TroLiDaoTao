@@ -10,7 +10,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chỉnh sửa đề tài</title>
+    <title>Khóa Luận Tốt Nghiệp</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
@@ -20,6 +20,9 @@
 </head>
 
 <body>
+<%
+	String max = (String)session.getAttribute("max"); 
+%>
     <jsp:include page="_header.jsp" />
     <div class="container">
 	<jsp:include page="_menu.jsp" />
@@ -27,45 +30,31 @@
 	<br><br>
 	
     <div class="col-md-8 mx-auto border">
-	    <div class="bg-light p-3 mb-3"><h4>Chỉnh sửa đề tài</h4></div>
+	    <div class="bg-light p-3 mb-3"><h4>Chỉnh sửa, bổ sung đơn đăng kí</h4></div>
 	    
 		    <form:form method="post" action="/NewsPageMVC/kltn/editsave" class="p-3">
 				
 				<div class="mb-3">
-				  <label for="mkl" class="form-label">ID</label>
-				  <form:input readonly="true" class="form-control"  path="mkl" />
+				  <label for="msv" class="form-label">MSV</label>
+				  <form:input readonly="true" class="form-control"  path="msv" />
 				</div>
-				
-				<div class="mb-3">
-				  <label for="detai" class="form-label">Tên đề tài</label>
-				  <form:input class="form-control"  path="detai" />
-				</div>
+
 			    <div class="mb-3">
-				  <label for="mgv" class="form-label">Giảng viên</label>
-				  <form:select class="form-control"  path="mgv">
-				  	<c:forEach items="${gv}" var="gv">
-						<form:option value="${gv.mgv}">${gv.hoten}</form:option> 
+				  <label for="mdt" class="form-label">Đề tài</label>
+				  <form:select class="form-control"  path="mdt">
+				  	<c:forEach items="${dt}" var="dt">
+						<form:option value="${dt.mdt}">${dt.tendt}</form:option> 
 					</c:forEach>
 				  </form:select>
-				</div>
-				
+				</div>	
 				<div class="mb-3">
 				  <label for="cstt" class="form-label">Cơ sở thực tập</label>
 				  <form:textarea class="form-control"  path="cstt" />
-				</div>
-				<div class="mb-3">
-				  <label for="idhk" class="form-label">Học kì</label>
-				  <form:select class="form-control"  path="idhk">
-					<c:forEach items="${hk}" var="hk">
-						<form:option value="${hk.id}">${hk.tenhk}</form:option> 
-					</c:forEach>
-				  </form:select>
-				</div>
-				
+				</div>				
 				<button type="submit" class="btn btn-primary">Cập nhật</button>
 				
 			</form:form>
-			
+			 <a class="btn btn-primary" href="/NewsPageMVC/kltn/kltndelete/<%=max%>">Hủy đăng kí </a>
 		</div>
 	</div>
 	

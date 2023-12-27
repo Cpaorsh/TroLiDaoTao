@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%-- 	
-		<a class="text-dark" href="/NewsPageMVC/drl/drllist">Điểm Rèn Luyện</a>
-		<% String role = (String)session.getAttribute("role"); if(role!=null && (role.equals("gvcn") || role.equals("tldt")))  { %>
-		<a class="text-dark" href="/NewsPageMVC/importAcc">Import Account</a>
-    	<% } %>		
- --%>
 <%
 	String max = (String)session.getAttribute("max"); 
 	String role = (String)session.getAttribute("role");
@@ -20,12 +14,6 @@
 	    <li >
 			<a href="/NewsPageMVC">Trang chủ</a>
 	    </li>
-	    <li >
-			<a  href="/NewsPageMVC/list/1">Tin tức</a>
-			<ul class="sub">
-				<li><a href="/NewsPageMVC/doc/docmana">Quản Lí Tin Tức</a></li>
-	      	</ul> 
-	    </li>
 	    <%if(max!=null)  { %>
 	    <li>
 	    	<% if(role.equals("sv")) { %>
@@ -38,31 +26,30 @@
 	    </li>
 	    <% } %>
 	    <li >
-			<a  href="#">TTCN</a>
+			<a  href="/NewsPageMVC/ttcn/ttcnlist">Thực Tập Chuyên Ngành</a>
 	    	<ul class="sub">
 	    		<li><a  href="/NewsPageMVC/dttt/dtttlist">Đề tài TTCN</a></li>
-	        	<li><a  href="/NewsPageMVC/ttcn/ttcnlist">SV đã đăng kí TTCN</a></li>
-				<li><a  href="/NewsPageMVC/dttt/dtttlistcd">Đề tài chờ duyệt</a></li>
 				<li><a  href="/NewsPageMVC/ttcn/ttcnlistcd">Đăng kí chờ duyệt</a></li>
-				<li><a  href="/NewsPageMVC/dttt/dtttlistkd">Đề tài không được duyệt</a></li>
 				<li><a  href="/NewsPageMVC/ttcn/ttcnlistkd">Đăng kí không được duyệt</a></li>
 	    		<li><a  href="/NewsPageMVC/hocki/hockilist">Đề tài từ các kì trước</a></li>
 	      	</ul>  
 	    </li>
 	    <li >
-			<a  href="#">KLTN</a>
+			<a  href="/NewsPageMVC/kltn/kltnlist">Khóa Luận Tốt Nghiệp</a>
 	    	<ul class="sub">
-	        	<li><a  href="#">Đề tài KLTN</a></li>
-				<li><a  href="#">Đề tài chưa duyệt</a></li>
-				<li><a  href="#">Đăng kí KLTN</a></li>	
-				<li><a  href="#">Đăng kí chờ duyệt</a></li>
+	    		<li><a  href="/NewsPageMVC/dtkl/dtkllist">Đề tài KLTN</a></li>
+				<li><a  href="/NewsPageMVC/kltn/kltnlistcd">Đăng kí chờ duyệt</a></li>
+				<li><a  href="/NewsPageMVC/kltn/kltnlistkd">Đăng kí không được duyệt</a></li>
 	      	</ul>  
 	    </li>
-	    <%if(role!=null && (role.equals("gvcn") || role.equals("tldt")))  { %>
+	    <%if(role!=null && (role.equals("gv") || role.equals("tldt")))  { %>
 	    <li >
 			<a  href="/NewsPageMVC/importAcc">Nhập DS SV</a>	
 	    </li>
 	    <% } %>
+	    <li >
+			<a href="/NewsPageMVC/doc/doclist">Tài liệu</a>
+	    </li>
 	  </ul>
 	</nav>
 	</div>

@@ -10,7 +10,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng kí mới</title>
+    <title>Khóa Luận Tốt Nghiệp</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
@@ -27,27 +27,20 @@
 	<br><br>
 	
     <div class="col-md-8 mx-auto border">
-	    <div class="bg-light p-3 mb-3"><h4>Thêm đề tài mới</h4></div>
+	    <div class="bg-light p-3 mb-3"><h4>Chỉnh sửa đề tài</h4></div>
 	    
-		    <form:form method="post" action="addsave" class="p-3">
-
-			    <div class="mb-3">
-				  <label for="detai" class="form-label">Tên đề tài</label>
-				  <form:input class="form-control" placeholder="Tên đề tài" path="detai" />
-				</div>
-			    <div class="mb-3">
-				  <label for="mgv" class="form-label">Giảng viên</label>
-				  <form:select class="form-control"  path="mgv">
-				  	<c:forEach items="${gv}" var="gv">
-						<option value="${gv.mgv}">${gv.hoten}</option> 
-					</c:forEach>
-				  </form:select>
-				</div>
-
+		    <form:form method="post" action="/NewsPageMVC/dtkl/editsave" class="p-3">
+				
 				<div class="mb-3">
-				  <label for="cstt" class="form-label">Cơ sở thực tập</label>
-				  <form:textarea class="form-control" placeholder="Cơ sở thực tập" path="cstt" />
+				  <label for="mdt" class="form-label">ID</label>
+				  <form:input readonly="true" class="form-control"  path="mdt" />
 				</div>
+				
+				<div class="mb-3">
+				  <label for="tendt" class="form-label">Tên đề tài</label>
+				  <form:input class="form-control"  path="tendt" />
+				</div>
+
 				<div class="mb-3">
 				  <label for="idhk" class="form-label">Học kì</label>
 				  <form:select class="form-control"  path="idhk">
@@ -56,7 +49,8 @@
 					</c:forEach>
 				  </form:select>
 				</div>
-				<button type="submit" class="btn btn-primary">Đăng kí</button>
+				
+				<button type="submit" class="btn btn-primary">Cập nhật</button>
 				
 			</form:form>
 			
@@ -65,4 +59,5 @@
 	
 	<jsp:include page="_footer.jsp" />
 </body>
+
 </html>

@@ -64,8 +64,9 @@ class UserMapper implements RowMapper<User> {
     user.setHoten(rs.getString("hoten"));
     user.setChucvu(rs.getString("chucvu"));
     user.setLop(rs.getString("lop"));
-    if (rs.getString("duyet") != null) {
-    	user.setDuyet(rs.getString("duyet"));///ttcn.duyet?
+    if (user.getMax().matches("\\d+")) {
+    	user.setDuyettt(rs.getString("ttcn.duyet"));
+    	user.setDuyetkl(rs.getString("kltn.duyet"));
     }
     return user;
   }

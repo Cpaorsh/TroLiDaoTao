@@ -57,6 +57,9 @@
 	<bean id="dtttDao" class="com.newspage.dao.DtttDao">    
 		<property name="template" ref="jt"></property>    
 	</bean>
+	<bean id="dtklDao" class="com.newspage.dao.DtklDao">    
+		<property name="template" ref="jt"></property>    
+	</bean>
 	<bean id="hockiDao" class="com.newspage.dao.HockiDao">    
 		<property name="template" ref="jt"></property>    
 	</bean>
