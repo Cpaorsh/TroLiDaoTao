@@ -62,7 +62,12 @@ public class FileUploadService {
 	
 					sinhvienList.add(excelTemplateVO);
 				}
+				
+				
 			}
+			sinhvienList.remove(sinhvienList.size() - 1);
+			sinhvienList.remove(sinhvienList.size() - 1);
+			sinhvienList.remove(sinhvienList.size() - 1);
 			fileUploadDao.saveFileDataInDB(sinhvienList);
 
 		}

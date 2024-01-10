@@ -25,13 +25,13 @@
 
 		<form:form id="loginForm" modelAttribute="login" action="loginProcess" method="post">
 			<p>
-				<label for="user_login">Tài khoản</label>
-				<form:input path="username" type="text" name="log" id="user_login" class="input" value="" size="20" autocapitalize="off"/>
+				<label for="user_login">Tài khoản </label>
+				<form:input path="username" type="text" name="log" id="user_login" class="input" placeholder="Mã sinh/giảng viên,  VD: 643000" size="20" autocapitalize="off"/>
 			</p>
 			<div class="user-pass-wrap">
 				<label for="user_pass">Mật khẩu</label>
 				<div class="wp-pwd">
-					<form:input path="password" type="password" name="pwd" id="user_pass" class="input password-input" value="" size="20"/>
+					<form:input path="password" type="password" name="pwd" id="user_pass" class="input password-input" placeholder="Ngày sinh (định dạng: dd/mm/yy) VD: 21/03/01" size="20"/>
 				</div>
 			</div>
 			<button type="submit" class="btn btn-primary">Đăng nhập</button>			

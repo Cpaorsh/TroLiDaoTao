@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thực tập chuyên ngành</title>
+    <title>Thực Tập Chuyên Ngành</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
@@ -33,7 +33,7 @@
    <div class="bg-light d-flex justify-content-between align-items-center">
    <h4 class="p-3">Danh sách đề tài Thực tập chuyên ngành</h4>
    <% if( role!=null && role.equals("gv"))  { %>
-   	<a class="btn btn-primary" href="dtttgvlist/<%=max%>">Đề tài của bạn</a>
+   	<a class="btn btn-primary" href="/NewsPageMVC/dttt/list/gv=<%=max%>">Đề tài của bạn</a>
    <% } %>
    <% if (role!=null && ( role.equals("sv") || role.equals("loptruong")) && duyet!=null && duyet.equals("1")) { %>
    <a class="btn btn-primary" href="/NewsPageMVC/ttcn/ttcnedit/<%=max%>">Đơn đăng kí </a>

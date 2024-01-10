@@ -4,6 +4,7 @@ package com.newspage.beans;
 public class Drl {
  
 	  private int msv;
+	  private String tthai;
 	  private int ythuc;
 	  private int clbhoc;
 	  private int quyche;
@@ -56,7 +57,8 @@ public class Drl {
 	  public void setSinhvien(Sinhvien sinhvien) {
 	    this.sinhvien = sinhvien;
 	  }
-		 
+		
+	  
 	  
 	public int getMsv() {
 	  return msv;
@@ -66,6 +68,12 @@ public class Drl {
 	  this.msv = msv;
 	}
 
+	public String getTthai() {    
+	    return tthai;    
+	}    
+	public void setTthai(String tthai) {    
+	    this.tthai = tthai;    
+	}
 		
 	  public int getYthuc() {
 		    return ythuc;

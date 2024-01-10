@@ -23,14 +23,14 @@ public class DtklController {
 	@Autowired
 	HockiDao hockiDao;
 	
-    @RequestMapping(value="dtkl/dtkllist/{id}", method = RequestMethod.GET)    
+    @RequestMapping(value="dtkl/list/hk={id}", method = RequestMethod.GET)    
     public String dtkllist(@PathVariable int id, Model m){    
         List<Dtkl> list = dtklDao.getDts(id);    
         m.addAttribute("list",list);  
         return "dtkllist";    
     }
     
-    @RequestMapping(value="dtkl/dtkllist", method = RequestMethod.GET)    
+    @RequestMapping(value="dtkl/list", method = RequestMethod.GET)    
     public String dtkllistlast(Model m){
     	Hocki hocki = hockiDao.getLastHk();
     	int id =  hocki.getId();
@@ -39,14 +39,16 @@ public class DtklController {
         return "dtkllist";    
     }
     
-    @RequestMapping(value="dtkl/dtklgvlist/{mgv}", method = RequestMethod.GET)    
+    @RequestMapping(value="dtkl/list/gv={mgv}", method = RequestMethod.GET)    
     public String dtklgvlist(@PathVariable String mgv, Model m){    
-        List<Dtkl> list = dtklDao.getDtgvs(mgv);    
+    	Hocki hocki = hockiDao.getLastHk();
+    	int id =  hocki.getId();
+    	List<Dtkl> list = dtklDao.getDtgvs(mgv, id);    
         m.addAttribute("list",list);  
         return "dtklgvlist";    
     }
     
-    @RequestMapping("dtkl/dtkladd")    
+    @RequestMapping("dtkl/add")    
     public String adddtkl(Model m){ 
         List<Hocki> hk = hockiDao.getHks();    
         m.addAttribute("hk",hk);
@@ -56,11 +58,11 @@ public class DtklController {
     @RequestMapping(value="dtkl/addsave",method = RequestMethod.POST)    
     public String addsave(@ModelAttribute("dtkl") Dtkl dtkl){    
     	dtklDao.saveDt(dtkl);
-    	return "redirect:/dtkl/dtkllist";   
+    	return "redirect:/dtkl/list";   
     }  
     
 
-    @RequestMapping(value="dtkl/dtkledit/{id}")    
+    @RequestMapping(value="dtkl/edit/{id}")    
     public String editdtkl(@PathVariable String id, Model m){    
         Dtkl dtkl=dtklDao.getDtById(id); 
         List<Hocki> hk = hockiDao.getHks();    
@@ -71,15 +73,15 @@ public class DtklController {
     @RequestMapping(value="dtkl/editsave",method = RequestMethod.POST)    
     public String editsave(@ModelAttribute("dtkl") Dtkl dtkl){    
     	dtklDao.updateDt(dtkl);
-    	return "redirect:/dtkl/dtkllist";
+    	return "redirect:/dtkl/list";
     }    
     
     
     
-    @RequestMapping(value="dtkl/dtkldelete/{id}",method = RequestMethod.GET)    
+    @RequestMapping(value="dtkl/delete/{id}",method = RequestMethod.GET)    
     public String delete(@PathVariable String id){    
     	dtklDao.deleteDt(id);    
-        return "redirect:/dtkl/dtkllist";    
+        return "redirect:/dtkl/list";    
     }
     
 

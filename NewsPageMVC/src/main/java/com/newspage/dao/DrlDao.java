@@ -20,7 +20,7 @@ JdbcTemplate template;
 	  
 	//first time
 	public int updateAv(Drl p){    
-		String sql="update drl set ythuc="+p.getYthuc()+", clbhoc="+p.getClbhoc()+", quyche="+p.getQuyche()+", vuotkho="+p.getQuyche()+", hoctap="+p.getHoctap()+", tsvgioi="+p.getTsvgioi()+", kqchaphanh="+p.getKqchaphanh()+", tgngoaikhoa="+p.getTgngoaikhoa()+", dangnn="+p.getDangnn()+", bieuduong="+p.getBieuduong()+", giupdo="+p.getGiupdo()+", tgdoanhoi="+p.getTgdoanhoi()+", ltythuc="+p.getYthuc()+", ltclbhoc="+p.getClbhoc()+", ltquyche="+p.getQuyche()+", ltvuotkho="+p.getQuyche()+", lthoctap="+p.getHoctap()+", lttsvgioi="+p.getTsvgioi()+", ltkqchaphanh="+p.getKqchaphanh()+", lttgngoaikhoa="+p.getTgngoaikhoa()+", ltdangnn="+p.getDangnn()+", ltbieuduong="+p.getBieuduong()+", ltgiupdo="+p.getGiupdo()+", lttgdoanhoi="+p.getTgdoanhoi()+", gvythuc="+p.getYthuc()+", gvclbhoc="+p.getClbhoc()+", gvquyche="+p.getQuyche()+", gvvuotkho="+p.getQuyche()+", gvhoctap="+p.getHoctap()+", gvtsvgioi="+p.getTsvgioi()+", gvkqchaphanh="+p.getKqchaphanh()+", gvtgngoaikhoa="+p.getTgngoaikhoa()+", gvdangnn="+p.getDangnn()+", gvbieuduong="+p.getBieuduong()+", gvgiupdo="+p.getGiupdo()+", gvtgdoanhoi="+p.getTgdoanhoi()+" where msv="+p.getMsv()+"";    
+		String sql="update drl set tthai ='Sinh viên đã đánh giá', ythuc="+p.getYthuc()+", clbhoc="+p.getClbhoc()+", quyche="+p.getQuyche()+", vuotkho="+p.getQuyche()+", hoctap="+p.getHoctap()+", tsvgioi="+p.getTsvgioi()+", kqchaphanh="+p.getKqchaphanh()+", tgngoaikhoa="+p.getTgngoaikhoa()+", dangnn="+p.getDangnn()+", bieuduong="+p.getBieuduong()+", giupdo="+p.getGiupdo()+", tgdoanhoi="+p.getTgdoanhoi()+", ltythuc="+p.getYthuc()+", ltclbhoc="+p.getClbhoc()+", ltquyche="+p.getQuyche()+", ltvuotkho="+p.getQuyche()+", lthoctap="+p.getHoctap()+", lttsvgioi="+p.getTsvgioi()+", ltkqchaphanh="+p.getKqchaphanh()+", lttgngoaikhoa="+p.getTgngoaikhoa()+", ltdangnn="+p.getDangnn()+", ltbieuduong="+p.getBieuduong()+", ltgiupdo="+p.getGiupdo()+", lttgdoanhoi="+p.getTgdoanhoi()+", gvythuc="+p.getYthuc()+", gvclbhoc="+p.getClbhoc()+", gvquyche="+p.getQuyche()+", gvvuotkho="+p.getQuyche()+", gvhoctap="+p.getHoctap()+", gvtsvgioi="+p.getTsvgioi()+", gvkqchaphanh="+p.getKqchaphanh()+", gvtgngoaikhoa="+p.getTgngoaikhoa()+", gvdangnn="+p.getDangnn()+", gvbieuduong="+p.getBieuduong()+", gvgiupdo="+p.getGiupdo()+", gvtgdoanhoi="+p.getTgdoanhoi()+" where msv="+p.getMsv()+"";    
 		return template.update(sql);    
 	}
 	public int updateSv(Drl p){    
@@ -28,14 +28,18 @@ JdbcTemplate template;
 	    return template.update(sql);    
 	}
 	public int updateLt(Drl p){    
-		String sql="update drl set ltythuc='"+p.getLtythuc()+"', ltclbhoc='"+p.getLtclbhoc()+"', ltquyche='"+p.getLtquyche()+"', ltvuotkho='"+p.getLtvuotkho()+"', lthoctap='"+p.getLthoctap()+"', lttsvgioi='"+p.getLttsvgioi()+"', ltkqchaphanh='"+p.getLtkqchaphanh()+"', lttgngoaikhoa='"+p.getLttgngoaikhoa()+"', ltdangnn='"+p.getLtdangnn()+"', ltbieuduong='"+p.getLtbieuduong()+"', ltgiupdo='"+p.getLtgiupdo()+"', lttgdoanhoi='"+p.getLttgdoanhoi()+"' where msv="+p.getMsv()+"";    
+		String sql="update drl set tthai ='Lớp trưởng đã đánh giá', ltythuc='"+p.getLtythuc()+"', ltclbhoc='"+p.getLtclbhoc()+"', ltquyche='"+p.getLtquyche()+"', ltvuotkho='"+p.getLtvuotkho()+"', lthoctap='"+p.getLthoctap()+"', lttsvgioi='"+p.getLttsvgioi()+"', ltkqchaphanh='"+p.getLtkqchaphanh()+"', lttgngoaikhoa='"+p.getLttgngoaikhoa()+"', ltdangnn='"+p.getLtdangnn()+"', ltbieuduong='"+p.getLtbieuduong()+"', ltgiupdo='"+p.getLtgiupdo()+"', lttgdoanhoi='"+p.getLttgdoanhoi()+"' where msv="+p.getMsv()+"";    
 	    return template.update(sql);    
 	}    
 	public int updateGv(Drl p){    
-		String sql="update drl set gvythuc='"+p.getGvythuc()+"', gvclbhoc='"+p.getGvclbhoc()+"', gvquyche='"+p.getGvquyche()+"', gvvuotkho='"+p.getGvvuotkho()+"', gvhoctap='"+p.getGvhoctap()+"', gvtsvgioi='"+p.getGvtsvgioi()+"', gvkqchaphanh='"+p.getGvkqchaphanh()+"', gvtgngoaikhoa='"+p.getGvtgngoaikhoa()+"', gvdangnn='"+p.getGvdangnn()+"', gvbieuduong='"+p.getGvbieuduong()+"', gvgiupdo='"+p.getGvgiupdo()+"', gvtgdoanhoi='"+p.getGvtgdoanhoi()+"' where msv="+p.getMsv()+"";    
+		String sql="update drl set tthai ='Giảng viên đã đánh giá', gvythuc='"+p.getGvythuc()+"', gvclbhoc='"+p.getGvclbhoc()+"', gvquyche='"+p.getGvquyche()+"', gvvuotkho='"+p.getGvvuotkho()+"', gvhoctap='"+p.getGvhoctap()+"', gvtsvgioi='"+p.getGvtsvgioi()+"', gvkqchaphanh='"+p.getGvkqchaphanh()+"', gvtgngoaikhoa='"+p.getGvtgngoaikhoa()+"', gvdangnn='"+p.getGvdangnn()+"', gvbieuduong='"+p.getGvbieuduong()+"', gvgiupdo='"+p.getGvgiupdo()+"', gvtgdoanhoi='"+p.getGvtgdoanhoi()+"' where msv="+p.getMsv()+"";    
 	    return template.update(sql);    
 	}
-	
+
+	public int newHk(){    
+		String sql="update drl set tthai ='Chưa đánh giá', ythuc=0, clbhoc=0, quyche=0, vuotkho=0, hoctap=0, tsvgioi=0, kqchaphanh=0, tgngoaikhoa=0, dangnn=0, bieuduong=0, giupdo=0, tgdoanhoi=0, ltythuc=0, ltclbhoc=0, ltquyche=0, ltvuotkho=0, lthoctap=0, lttsvgioi=0, ltkqchaphanh=0, lttgngoaikhoa=0, ltdangnn=0, ltbieuduong=0, ltgiupdo=0, lttgdoanhoi=0, gvythuc=0, gvclbhoc=0, gvquyche=0, gvvuotkho=0, gvhoctap=0, gvtsvgioi=0, gvkqchaphanh=0, gvtgngoaikhoa=0, gvdangnn=0, gvbieuduong=0, gvgiupdo=0, gvtgdoanhoi=0";    
+		return template.update(sql);    
+	}
 	
 	public Drl getDrlByMsv(int msv){    
 	    String sql="select * from drl where msv=?";    
@@ -91,6 +95,8 @@ JdbcTemplate template;
 	            e.setGvtgdoanhoi(rs.getInt(39));
 	            e.setGvtongdiem(rs.getInt(40));
 	           
+	            e.setTthai(rs.getString(41));
+	            
 	            s.setHoten(rs.getString("hoten"));
 	            s.setLop(rs.getString("lop"));
 	            e.setSinhvien(s);
@@ -148,6 +154,8 @@ JdbcTemplate template;
 	            e.setGvtgdoanhoi(rs.getInt(39));
 	            e.setGvtongdiem(rs.getInt(40));
 	           
+	            e.setTthai(rs.getString(41));
+	            
 	            s.setHoten(rs.getString("hoten"));
 	            s.setLop(rs.getString("lop"));
 	            e.setSinhvien(s);
@@ -208,6 +216,8 @@ JdbcTemplate template;
 	            e.setGvtgdoanhoi(rs.getInt(39));
 	            e.setGvtongdiem(rs.getInt(40));
 	           
+	            e.setTthai(rs.getString(41));
+	            
 	            s.setHoten(rs.getString("hoten"));
 	            s.setLop(rs.getString("lop"));
 	            e.setSinhvien(s);
@@ -216,15 +226,16 @@ JdbcTemplate template;
 	    });    
 	}
 	
-
 	
+
+	//phan trang
 	public int getTotal(){    
 		 String sql = "select count(*) from drl";
 		 return template.queryForObject(sql, Integer.class);
 	}
 	
 	public List<Drl> getbyPagination(int drlid,int totalRecord){    
-	    String sql="select * from drl INNER JOIN sinhvien ON drl.msv = sinhvien.msv order by msv desc limit "+(drlid-1)+","+totalRecord;    
+	    String sql="select * from drl INNER JOIN sinhvien ON drl.msv = sinhvien.msv order by drl.msv desc limit "+(drlid-1)+","+totalRecord;    
 	    return template.query(sql,new RowMapper<Drl>(){    
 	        public Drl mapRow(ResultSet rs, int row) throws SQLException {    
 	        	Drl e=new Drl(); 
@@ -272,6 +283,8 @@ JdbcTemplate template;
 	            e.setGvtgdoanhoi(rs.getInt(39));
 	            e.setGvtongdiem(rs.getInt(40));
 	           
+	            e.setTthai(rs.getString(41));
+	            
 	            s.setHoten(rs.getString("hoten"));
 	            s.setLop(rs.getString("lop"));
 	            e.setSinhvien(s);

@@ -57,7 +57,8 @@ public class DtklDao {
 	    });    
 	}
 	
-	public List<Dtkl> getDtcs(int id){    
+	//de tai chua co sv dang ki
+	public List<Dtkl> getDtcdks(int id){    
 	    return template.query("select * from dtkl left JOIN kltn ON dtkl.mdt = kltn.mdt where kltn.mdt is null",new RowMapper<Dtkl>(){    
 	        public Dtkl mapRow(ResultSet rs, int row) throws SQLException {    
 	        	Dtkl d=new Dtkl();    
@@ -73,8 +74,8 @@ public class DtklDao {
 	
 
 	
-	public List<Dtkl> getDtgvs(String mgv){    
-	    return template.query("select * from dtkl LEFT JOIN giangvien ON dtkl.mgv = giangvien.mgv where dtkl.mgv='"+mgv+"'",new RowMapper<Dtkl>(){    
+	public List<Dtkl> getDtgvs(String mgv, int id){    
+	    return template.query("select * from dtkl LEFT JOIN giangvien ON dtkl.mgv = giangvien.mgv where dtkl.mgv='"+mgv+"' and idhk ="+id+"",new RowMapper<Dtkl>(){    
 	        public Dtkl mapRow(ResultSet rs, int row) throws SQLException {    
 	        	Dtkl d=new Dtkl();    
 	            d.setMdt(rs.getInt(1));    

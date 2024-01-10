@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thực tập chuyên ngành</title>
+    <title>Thực Tập Chuyên Ngành</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
@@ -31,7 +31,7 @@
    <div class="bg-light d-flex justify-content-between align-items-center">
    <h4 class="p-3">Thực tập chuyên ngành</h4>
    <% if( role!=null && role.equals("gv"))  { %>
-   	<a class="btn btn-primary" href="/NewsPageMVC/dttt/dtttadd">Thêm đề tài mới</a>
+   	<a class="btn btn-primary" href="/NewsPageMVC/dttt/add">Thêm đề tài mới</a>
    <% } %>
 	
    </div>
@@ -55,8 +55,8 @@
 		      <td>${dttt.giangvien.hoten}</td>
 		      <td>${dttt.giangvien.bomon}</td>
 			   <td>
-			   <a class="btn btn-sm btn-outline-primary" href="/NewsPageMVC/dttt/dtttedit/${dttt.mdt}">Sửa</a>
-			   <a class="btn btn-sm btn-outline-danger" href="/NewsPageMVC/dttt/dtttdelete/${dttt.mdt}">Xóa</a>
+			   <a class="btn btn-sm btn-outline-primary" href="/NewsPageMVC/dttt/edit/${dttt.mdt}">Sửa</a>
+			   <a class="btn btn-sm btn-outline-danger" href="/NewsPageMVC/dttt/delete/${dttt.mdt}">Xóa</a>
 			   </td> 
 		    </tr>
 		    </c:forEach>

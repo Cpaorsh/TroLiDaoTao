@@ -33,10 +33,10 @@
    <div class="bg-light d-flex justify-content-between align-items-center">
    <h4 class="p-3">Danh sách đề tài Khóa Luận Tốt Nghiệp</h4>
    <% if( role!=null && role.equals("gv"))  { %>
-   	<a class="btn btn-primary" href="dtklgvlist/<%=max%>">Đề tài của bạn</a>
+   	<a class="btn btn-primary" href="/NewsPageMVC/kltn/list/gv=<%=max%>">Đề tài của bạn</a>
    <% } %>
    <% if (role!=null && ( role.equals("sv") || role.equals("loptruong")) && duyet!=null && duyet.equals("1")) { %>
-   <a class="btn btn-primary" href="/NewsPageMVC/kltn/kltnedit/<%=max%>">Đơn đăng kí </a>
+    <a class="btn btn-primary" href="/NewsPageMVC/kltn/edit/<%=max%>">Đơn đăng kí </a>
    <% } %>
 	
    </div>

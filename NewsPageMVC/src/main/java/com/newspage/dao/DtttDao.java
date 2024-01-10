@@ -57,10 +57,22 @@ public class DtttDao {
 	    });    
 	}
 	
+	// de tai chua full slot
+	//SELECT dttt.mdt, dttt.tendt, COUNT(ttcn.mdt) FROM dttt LEFT JOIN ttcn ON ttcn.mdt = dttt.mdt where dttt.idhk=3 GROUP BY dttt.mdt having count(ttcn.mdt) <4;
+	public List<Dttt> getDtcs(int id){    
+	    return template.query("SELECT dttt.mdt, dttt.tendt, COUNT(ttcn.mdt) FROM dttt LEFT JOIN ttcn ON ttcn.mdt = dttt.mdt where dttt.idhk="+id+" GROUP BY dttt.mdt having count(ttcn.mdt)<4",new RowMapper<Dttt>(){    
+	        public Dttt mapRow(ResultSet rs, int row) throws SQLException {    
+	        	Dttt d=new Dttt();    
+	            d.setMdt(rs.getInt(1));    
+	            d.setTendt(rs.getString(2));     
+	            return d;    
+	        }    
+	    });    
+	}
 
 	
-	public List<Dttt> getDtgvs(String mgv){    
-	    return template.query("select * from dttt LEFT JOIN giangvien ON dttt.mgv = giangvien.mgv where dttt.mgv='"+mgv+"'",new RowMapper<Dttt>(){    
+	public List<Dttt> getDtgvs(String mgv, int id){    
+	    return template.query("select * from dttt LEFT JOIN giangvien ON dttt.mgv = giangvien.mgv where dttt.mgv='"+mgv+"' and idhk="+id+"",new RowMapper<Dttt>(){    
 	        public Dttt mapRow(ResultSet rs, int row) throws SQLException {    
 	        	Dttt d=new Dttt();    
 	            d.setMdt(rs.getInt(1));    

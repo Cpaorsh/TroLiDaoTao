@@ -17,9 +17,12 @@
     <link type="text/css" href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 
 <script>
-function myFunction() {
-    var a = confirm("Xác nhận đăng kí thực hiện KLTN?");
-    console.log(a)
+function sureToDelete(e){
+    if(confirm('Xác nhận đăng kí KLTN?')){
+        return true;
+    }else{
+        e.preventDefault();
+    }
 }
 
 $(function() {
@@ -48,12 +51,14 @@ $(function() {
    
    <div class="bg-light d-flex justify-content-between align-items-center">
    <h4 class="p-3">Danh sách sinh viên đã đăng kí Khóa luân tốt nghiệp</h4>
-
+	   <% if( role!=null && role.equals("gv"))  { %>
+   		<a class="btn btn-primary" href="/NewsPageMVC/kltn/list/gv=<%=max%>">SV đăng kí đề tài của bạn</a>
+   	   <% } %>
    <% if (role!=null && ( role.equals("sv") || role.equals("loptruong"))) {
     	if (duyetkl!=null && duyetkl.equals("1")) { %>
-   			<a class="btn btn-primary" href="kltnedit/<%=max%>">Đơn đăng kí </a>
+   			<a class="btn btn-primary" href="edit/<%=max%>">Đơn đăng kí </a>
    		<% }else if(duyetkl==null){ %>
-   			<a onclick="myFunction()" class="btn btn-primary" href="kltnadd/<%=max%>">Đăng kí </a>
+   			<a onclick="sureToDelete(e)" class="btn btn-primary" href="add/<%=max%>">Đăng kí </a>
    		<% }
    } %>
    </div>
@@ -72,7 +77,9 @@ $(function() {
 		      <th scope="col">Giảng viên hướng dẫn</th>
 		      <th scope="col">Cơ sở thực tập</th>
 		      <th scope="col">Bộ môn quản lí</th>
+		      <% if(role!=null && role.equals("tldt"))  { %>
 		      <th scope="col">Chức năng</th>
+		      <% } %>
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -86,11 +93,11 @@ $(function() {
 		      <td>${kltn.dtkl.giangvien.hoten}</td>
 		      <td>${kltn.cstt}</td>
 		      <td>${kltn.dtkl.giangvien.bomon}</td>
-			  <td>
-			   <% if(role!=null && role.equals("tldt"))  { %>
-			   <a class="btn btn-sm btn-outline-primary" href="kltnduyet/${kltn.msv}">Xét duyệt</a>
-			   <% } %>
+			  <% if(role!=null && role.equals("tldt"))  { %>
+			  <td>			  
+			   <a class="btn btn-sm btn-outline-primary" href="duyet/${kltn.msv}">Xét duyệt</a>			   
 			  </td> 
+			  <% } %>
 		    </tr>
 		    </c:forEach>
 		  </tbody>

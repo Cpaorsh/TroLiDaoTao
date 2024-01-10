@@ -38,7 +38,7 @@ function myFunction() {
    <div class="bg-light d-flex justify-content-between align-items-center">
    <h4 class="p-3">Danh sách tài liệu, văn bản mẫu</h4>
    <% if( role!=null && role.equals("tldt"))  { %>
-   		<a class="btn btn-primary" href="docadd">Thêm tài liệu</a>
+   		<a class="btn btn-primary" href="add">Thêm tài liệu</a>
    <% } %>
    </div>
    <br>
@@ -48,8 +48,10 @@ function myFunction() {
 		    <tr>
 		      <th scope="col">STT</th>
 		      <th scope="col">Tên tài liệu</th>
-		      <th scope="col">Link download</th>
+		      <th scope="col">File</th>
+		      <% if( role!=null && role.equals("tldt"))  { %>
 		      <th scope="col">Chức năng</th>
+		      <% } %>
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -58,12 +60,12 @@ function myFunction() {
 		      <th>${count.count}</th>
 		      <td>${doc.title}</td>
 		      <td><a class="text-dark" href="down/${doc.id}">${doc.namefi}</a></td>
+			   <% if( role!=null && role.equals("tldt"))  { %>
 			   <td>
-			   	<% if( role!=null && role.equals("tldt"))  { %>
-			   		<a class="btn btn-sm btn-outline-primary" href="docedit/${doc.id}">Edit</a>
-			   		<a onclick="myFunction()" class="btn btn-sm btn-outline-danger" href="docdelete/${doc.id}">Delete</a>
-			   	<% } %>
+			   		<a class="btn btn-sm btn-outline-primary" href="edit/${doc.id}">Edit</a>
+			   		<a onclick="myFunction()" class="btn btn-sm btn-outline-danger" href="delete/${doc.id}">Delete</a>			   	
 			   </td> 
+			   <% } %>
 		    </tr>
 		    </c:forEach>
 		  </tbody>

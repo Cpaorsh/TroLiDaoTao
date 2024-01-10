@@ -21,7 +21,7 @@
 <%
 	String max = (String)session.getAttribute("max"); 
 	String role = (String)session.getAttribute("role");
-	String duyet = (String)session.getAttribute("duyet");
+	String duyettt = (String)session.getAttribute("duyettt");
 %>
 	<jsp:include page="_header.jsp" />
 	<div class="container">
@@ -33,8 +33,8 @@
    
    <div class="bg-light d-flex justify-content-between align-items-center">
    <h4 class="p-3">Danh sách SV đăng kí Thực tập chuyên ngành chưa được duyệt</h4>
-   <% if (role!=null && (role.equals("sv")|| role.equals("loptruong")) && duyet!=null) { %>
-   <a class="btn btn-primary" href="ttcndelete/<%=max%>">Hủy đăng kí </a>
+   <% if (role!=null && (role.equals("sv")|| role.equals("loptruong")) && duyettt!=null) { %>
+   <a class="btn btn-primary" href="delete/<%=max%>">Hủy đăng kí </a>
    <% } %>
    </div>
    <br>
@@ -47,7 +47,9 @@
 		      <th scope="col">MSV</th>
 		      <th scope="col">Lớp</th>
 		      <th scope="col">Lí do từ chối</th>
+		      <%if(role!=null && role.equals("tldt"))  { %>
 		      <th scope="col">Chức năng</th>
+		      <% } %>
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -58,11 +60,11 @@
 		      <td>${ttcn.sinhvien.msv}</td>
 		      <td>${ttcn.sinhvien.lop}</td>
 		      <td>${ttcn.lidotc}</td>
-			   <td>
 			   <%if(role!=null && role.equals("tldt"))  { %>
-			   <a class="btn btn-sm btn-outline-primary" href="ttcnduyet/${ttcn.msv}">Xét duyệt</a>
-			   <% } %>
+			   <td>
+			   <a class="btn btn-sm btn-outline-primary" href="duyet/${ttcn.msv}">Xét duyệt</a>			   
 			   </td> 
+			   <% } %>
 		    </tr>
 		    </c:forEach>
 		  </tbody>

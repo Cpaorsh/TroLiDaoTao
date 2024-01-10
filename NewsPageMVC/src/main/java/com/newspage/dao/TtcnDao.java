@@ -45,7 +45,7 @@ public class TtcnDao {
 	}
 	
 	public List<Ttcn> getTtcns(int id){    
-	    return template.query("select * from ttcn INNER JOIN sinhvien ON ttcn.msv = sinhvien.msv left JOIN dttt INNER JOIN giangvien ON dttt.mgv = giangvien.mgv ON ttcn.mdt = dttt.mdt where ttcn.idhk="+id+" and ttcn.duyet=1",new RowMapper<Ttcn>(){    
+	    return template.query("select * from ttcn INNER JOIN sinhvien ON ttcn.msv = sinhvien.msv left JOIN dttt INNER JOIN giangvien ON dttt.mgv = giangvien.mgv ON ttcn.mdt = dttt.mdt where ttcn.idhk="+id+" and ttcn.duyet=1 order by dttt.tendt asc",new RowMapper<Ttcn>(){    
 	    public Ttcn mapRow(ResultSet rs, int row) throws SQLException {    
 	        	Ttcn t=new Ttcn();    
 	        	t.setMsv(rs.getString(1));
@@ -72,6 +72,33 @@ public class TtcnDao {
 	    });    
 	}
 	
+	public List<Ttcn> getTtcnsbyGv(int id, String mgv){    
+	    return template.query("select * from ttcn INNER JOIN sinhvien ON ttcn.msv = sinhvien.msv left JOIN dttt INNER JOIN giangvien ON dttt.mgv = giangvien.mgv ON ttcn.mdt = dttt.mdt where ttcn.idhk="+id+" and giangvien.mgv='"+mgv+"' and ttcn.duyet=1 order by dttt.tendt asc",new RowMapper<Ttcn>(){    
+	    public Ttcn mapRow(ResultSet rs, int row) throws SQLException {    
+	        	Ttcn t=new Ttcn();    
+	        	t.setMsv(rs.getString(1));
+	        	t.setMdt(rs.getString(2));       
+	            t.setCstt(rs.getString(3));
+	            t.setIdhk(rs.getInt(4));
+
+	            Sinhvien s = new Sinhvien();
+	            s.setHoten(rs.getString("sinhvien.hoten"));
+	            s.setMsv(rs.getString("msv"));
+	            s.setLop(rs.getString("sinhvien.lop"));
+	            t.setSinhvien(s);           
+	            
+	            Dttt d=new Dttt(); 
+	            d.setTendt(rs.getString("tendt"));
+	            Giangvien g= new Giangvien();
+	            g.setHoten(rs.getString("giangvien.hoten"));
+	            g.setBomon(rs.getString("bomon"));
+	            d.setGiangvien(g);          
+	            t.setDttt(d);
+	             
+	            return t;    
+	        }    
+	    });    
+	}
 	
 	public List<Ttcn> getTtcnCd(){    
 	    return template.query("select * from ttcn INNER JOIN sinhvien ON ttcn.msv = sinhvien.msv left JOIN dttt INNER JOIN giangvien ON dttt.mgv = giangvien.mgv ON ttcn.mdt = dttt.mdt where ttcn.duyet=0",new RowMapper<Ttcn>(){    

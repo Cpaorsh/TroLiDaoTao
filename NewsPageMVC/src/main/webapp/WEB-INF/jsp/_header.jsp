@@ -64,7 +64,7 @@
 		    	<div class="dropdown">
 				  <span class="text-white"> Welcome <%= session.getAttribute("name") %> </span>
 				  <div class="dropdown-content">
-				  	<a class="btn btn-sm btn-outline-secondary me-2" href="/NewsPageMVC/changePassword">Password</a>
+				  	<!-- <a class="btn btn-sm btn-outline-secondary me-2" href="#">Password</a> -->
 				  	<a class="btn btn-sm btn-outline-secondary me-2" href="/NewsPageMVC/login">Logout</a>
 				  </div>
 				</div>

@@ -26,14 +26,14 @@ public class DocController {
 	@Autowired
     DocDao dao;
 	
-	@RequestMapping(value={"doc/doclist"})    
+	@RequestMapping(value={"doc/list"})    
     public String docmana(Model m){    
         List<Doc> list = dao.getDocs();    
         m.addAttribute("list",list);  
         return "doclist";    
     }
 
-    @RequestMapping("doc/docadd")    
+    @RequestMapping("doc/add")    
     public String docadd(Model m){    
         m.addAttribute("command", new Doc());  
         return "docadd";   
@@ -43,7 +43,7 @@ public class DocController {
     	if (doc.getFiled().isEmpty()) {
     		dao.save(doc);
     		//return new ModelAndView("redirect:/doc/docmana");
-    		return "redirect:/doc/doclist"; 
+    		return "redirect:/doc/list"; 
     	}
 		byte[] bytes = doc.getFiled().getBytes();
 		String bytess = dao.bytesToHex(bytes);
@@ -51,12 +51,12 @@ public class DocController {
 		doc.setNamefi(doc.getFiled().getOriginalFilename());
 		dao.save(doc);   
     	//return new ModelAndView("/docmana");
-    	return "redirect:/doc/doclist";   
+    	return "redirect:/doc/list";   
     }  
     
 
 
-    @RequestMapping(value="doc/docedit/{id}")    
+    @RequestMapping(value="doc/edit/{id}")    
     public String docedit(@PathVariable int id, Model m){    
         Doc doc=dao.getDocById(id);    
         m.addAttribute("command",doc);  
@@ -66,22 +66,22 @@ public class DocController {
     public String editsave(@ModelAttribute("doc") Doc doc){    
     	if (doc.getFiled().isEmpty()) {
     		dao.update(doc);
-    		return "redirect:/doc/doclist";
+    		return "redirect:/doc/list";
     	}
 		byte[] bytes = doc.getFiled().getBytes();
 		String bytess = dao.bytesToHex(bytes);
 		doc.setBytefi(bytess);
 		doc.setNamefi(doc.getFiled().getOriginalFilename());
 		dao.update(doc);    	    
-		return "redirect:/doc/doclist";    
+		return "redirect:/doc/list";    
     }    
     
     
     
-    @RequestMapping(value="doc/docdelete/{id}",method = RequestMethod.GET)    
+    @RequestMapping(value="doc/delete/{id}",method = RequestMethod.GET)    
     public String delete(@PathVariable int id){    
         dao.delete(id);    
-        return "redirect:/doc/doclist";    
+        return "redirect:/doc/list";    
     }
     
     

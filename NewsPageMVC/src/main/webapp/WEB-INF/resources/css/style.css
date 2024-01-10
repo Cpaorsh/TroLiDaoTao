@@ -2,13 +2,17 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 
+input, input::placeholder {
+    font: 0.75rem/3 sans-serif;
+}
+
 body {
 	font-family: Helvetica Rounded, sans-serif;
 }
 
 a {
 	text-decoration: none;
-	font-size:1.3vw;
+	font-size:1.1vw;
 }
 
 .blog-header {
@@ -497,11 +501,12 @@ ul {
   list-style: none;
   position: relative;
   text-align: left;
+  display: inline-flex;
 }
 
 li {
   float: left;
-  width: 16%;
+  display: inline-flex;
 }
 
 /* clear'n floats */
@@ -550,6 +555,7 @@ ul.primary li a:hover {
 
 /* subs */
 ul.sub {
+  top: 61px;
   position: absolute;
   z-index: 200;
   box-shadow: 2px 2px 0 #BEBEBE;

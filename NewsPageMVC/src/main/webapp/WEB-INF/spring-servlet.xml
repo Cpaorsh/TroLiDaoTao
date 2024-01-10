@@ -69,6 +69,9 @@
 	<bean id="sinhvienDao" class="com.newspage.dao.SinhvienDao">    
 		<property name="template" ref="jt"></property>    
 	</bean>
+	<bean id="manageDao" class="com.newspage.dao.ManageDao">    
+		<property name="template" ref="jt"></property>    
+	</bean>
 	
 	<bean id="userService" class="com.newspage.service.UserServiceImpl" />
   	<bean id="userDao" class="com.newspage.dao.UserDaoImpl" />

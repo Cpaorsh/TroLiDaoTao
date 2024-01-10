@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.newspage.beans.Hocki;
+import com.newspage.dao.DrlDao;
 import com.newspage.dao.HockiDao;
 
 @Controller
@@ -17,26 +18,29 @@ public class HockiController {
 
 	@Autowired
 	HockiDao hockiDao;
+	@Autowired
+	DrlDao drlDao;
 	
-	@RequestMapping(value="hocki/hockilist", method = RequestMethod.GET)    
-    public String hockilist(Model m){    
-        List<Hocki> list = hockiDao.getHks();    
-        m.addAttribute("list",list);  
-        return "hockilist";    
-    }
+//	@RequestMapping(value="hocki/list", method = RequestMethod.GET)    
+//    public String hockilist(Model m){    
+//        List<Hocki> list = hockiDao.getHks();    
+//        m.addAttribute("list",list);  
+//        return "manage";    
+//    }
 	
-	@RequestMapping(value="hocki/hkadd")    
+	@RequestMapping(value="hocki/new")    
     public String addHockidt(){  
 		Hocki hocki = hockiDao.getLastHk();
 		String str= hocki.getTenhk();
     	hockiDao.addHk(str);
-    	return "redirect:/hocki/hockilist";     
+    	drlDao.newHk();
+    	return "redirect:/manage";     
     }
 	
-    @RequestMapping(value="hocki/hockidelete/{id}",method = RequestMethod.GET)    
+    @RequestMapping(value="hocki/delete/{id}",method = RequestMethod.GET)    
     public String delete(@PathVariable int id){    
     	hockiDao.deleteHk(id);    
-        return "redirect:/hocki/hockilist";    
+        return "redirect:/hocki/list";    
     }
 //	<div class="dropdown-content">
 //		<c:forEach items="${list}" var="hocki">

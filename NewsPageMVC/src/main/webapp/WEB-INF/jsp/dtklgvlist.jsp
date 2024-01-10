@@ -31,7 +31,7 @@
    <div class="bg-light d-flex justify-content-between align-items-center">
    <h4 class="p-3">Đề Tài Khóa Luận Tốt Nghiệp</h4>
    <% if( role!=null && role.equals("gv"))  { %>
-   	<a class="btn btn-primary" href="/NewsPageMVC/dtkl/dtkladd">Thêm đề tài mới</a>
+   	<a class="btn btn-primary" href="/NewsPageMVC/dtkl/add">Thêm đề tài mới</a>
    <% } %>
 	
    </div>
@@ -55,8 +55,8 @@
 		      <td>${dtkl.giangvien.hoten}</td>
 		      <td>${dtkl.giangvien.bomon}</td>
 			   <td>
-			   <a class="btn btn-sm btn-outline-primary" href="/NewsPageMVC/dtkl/dtkledit/${dtkl.mdt}">Sửa</a>
-			   <a class="btn btn-sm btn-outline-danger" href="/NewsPageMVC/dtkl/dtkldelete/${dtkl.mdt}">Xóa</a>
+			   <a class="btn btn-sm btn-outline-primary" href="/NewsPageMVC/dtkl/edit/${dtkl.mdt}">Sửa</a>
+			   <a class="btn btn-sm btn-outline-danger" href="/NewsPageMVC/dtkl/delete/${dtkl.mdt}">Xóa</a>
 			   </td> 
 		    </tr>
 		    </c:forEach>

@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đánh giá điểm rèn luyện</title>
+    <title>Điểm rèn luyện</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
@@ -18,31 +18,24 @@
 <% 
 String rolea = (String)session.getAttribute("role");
 String max = (String)session.getAttribute("max");
-String blockG = "fail";
-String blockL = "fail";
-String blockS = "fail";
+String blockG = "blocli";
+String blockL = "blocli";
+String blockS = "blocli";
+String url = (String)request.getAttribute("javax.servlet.forward.request_uri");
+url = url.substring(url.lastIndexOf("/") + 1);
 if(rolea!=null){
-	if(rolea.equals("loptruong"))  {
-		String url = (String)request.getAttribute("javax.servlet.forward.request_uri");
-		url = url.substring(url.lastIndexOf("/") + 1);
-		blockG = "blocli";
-		if(max.equals(url)) {}
-		else{blockS = "blocli";}
-	}else if(rolea.equals("gv")){
-		blockS = "blocli";
-		blockL = "blocli";
-	}else {
-		blockL = "blocli";
-		blockG = "blocli";
-		blockS = "blocli";
+	if(max.equals(url)) {
+		blockS = "fail";
+	}if(rolea.equals("loptruong"))  {
+		blockL = "fail";
+	}if(rolea.equals("gv")){
+		blockG = "fail";
 	}
-}else{
-	blockL = "blocli";
-	blockG = "blocli";
 }
 request.setAttribute("blockG", blockG);
 request.setAttribute("blockL", blockL);
 request.setAttribute("blockS", blockS);
+
 %>
 </head>
 <body>

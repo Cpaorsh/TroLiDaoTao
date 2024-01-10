@@ -62,7 +62,7 @@
 			<h4 class="pb-3 mb-4 font-italic border-bottom">Danh sách thực hiện Khóa luận tốt nghiệp</h4>
 			<ol class="list-unstyled mb-0">
 				<c:forEach var="hocki" items="${liss}" begin="0" end="6">
-				<li class="col-12"><a class="text-dark" href="/NewsPageMVC/kltn/kltnlist/${hocki.id}">${hocki.tenhk}</a></li><br>			
+				<li class="col-12"><a class="text-dark" href="/NewsPageMVC/kltn/list/hk=${hocki.id}">${hocki.tenhk}</a></li><br>			
 				</c:forEach>
 			</ol>
 		</div>
@@ -77,7 +77,7 @@
 			<h4 class="pb-3 mb-4 font-italic border-bottom">Danh sách thực hiện Thực tập chuyên ngành</h4>
 			<ol class="list-unstyled mb-0">
 				<c:forEach var="hocki" items="${liss}" >
-				<li class="col-12"><a class="text-dark" href="/NewsPageMVC/kltn/kltnlist/${hocki.id}">${hocki.tenhk}</a></li><br>			
+				<li class="col-12"><a class="text-dark" href="/NewsPageMVC/ttcn/list/hk=${hocki.id}">${hocki.tenhk}</a></li><br>			
 				</c:forEach>
 			</ol>
 		</div>

@@ -17,9 +17,12 @@
     <link type="text/css" href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 
 <script>
-function myFunction() {
-    var a = confirm("Xác nhận đăng kí thực hiện TTCN?");
-    console.log(a)
+function sureToDelete(e){
+    if(confirm('Xác nhận đăng kí thực hiện TTCN?')){
+        return true;
+    }else{
+        e.preventDefault();
+    }
 }
 
 $(function() {
@@ -51,16 +54,18 @@ $(function() {
    
    <div class="bg-light d-flex justify-content-between align-items-center">
        <h4 class="p-3">Danh sách sinh viên đã đăng kí Thực tập chuyên ngành</h4>
-	   
+	   <% if( role!=null && role.equals("gv"))  { %>
+   		<a class="btn btn-primary" href="/NewsPageMVC/ttcn/list/gv=<%=max%>">SV đăng kí đề tài của bạn</a>
+   	   <% } %>
 	   <% if (role!=null && ( role.equals("sv") || role.equals("loptruong"))) {
 	   		if (duyettt!=null && duyettt.equals("1")) { %>
-	   			<a class="btn btn-primary" href="ttcnedit/<%=max%>">Đơn đăng kí </a>
+	   			<a class="btn btn-primary" href="edit/<%=max%>">Đơn đăng kí </a>
 	   		<% }else if(duyettt==null){ %>
-	   			<a onclick="myFunction()" class="btn btn-primary" href="ttcnadd/<%=max%>">Đăng kí </a>
+	   			<a onclick="sureToDelete(e)" class="btn btn-primary" href="add/<%=max%>">Đăng kí </a>
 	   		<% }
 	   } %>
    </div>
-   <button class="btn btn-primary float-end""  id="abc">Xuất ra Excel</button>
+   <button class="btn btn-primary float-end"  id="abc">Xuất ra Excel</button>
    
    <br>
    <br>
@@ -76,7 +81,9 @@ $(function() {
 		      <th scope="col">Giảng viên hướng dẫn</th>
 		      <th scope="col">Cơ sở thực tập</th>
 		      <th scope="col">Bộ môn quản lí</th>
+		      <% if(role!=null && role.equals("tldt"))  { %>
 		      <th scope="col">Chức năng</th>
+		      <% } %>
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -90,11 +97,11 @@ $(function() {
 		      <td>${ttcn.dttt.giangvien.hoten}</td>
 		      <td>${ttcn.cstt}</td>
 		      <td>${ttcn.dttt.giangvien.bomon}</td>
-			  <td>
-			   <% if(role!=null && role.equals("tldt"))  { %>
-			   <a class="btn btn-sm btn-outline-primary" href="ttcnduyet/${ttcn.msv}">Xét duyệt</a>
-			   <% } %>
+			  <% if(role!=null && role.equals("tldt"))  { %>
+			  <td>			   
+			   <a class="btn btn-sm btn-outline-primary" href="duyet/${ttcn.msv}">Xét duyệt</a>			   
 			  </td> 
+			  <% } %>
 		    </tr>
 		    </c:forEach>
 		  </tbody>
